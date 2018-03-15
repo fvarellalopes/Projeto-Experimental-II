@@ -1,7 +1,7 @@
-CREATE TABLE "UsuarioChamado" (
-	"idusuario" int NOT NULL,
-	"idchamado" int NOT NULL,
-	"idnresponsavel" BOOLEAN NOT NULL
+CREATE TABLE UsuarioChamado (
+	idusuario int NOT NULL,
+	idchamado int NOT NULL,
+	idnresponsavel BOOLEAN NOT NULL
 ) WITH (
   OIDS=FALSE
 );
