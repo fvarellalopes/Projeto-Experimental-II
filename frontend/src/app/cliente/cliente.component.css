@@ -1,0 +1,32 @@
+.barra{
+  text-align:center;
+  background: #6e797d;
+}
+.nav-tabs{
+   border-bottom:none;
+   display: inline-block;
+}
+
+.nav-tabs a{
+   color:#FFF;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: #01c0dc;
+}
+
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+    background-color: #01c0dc;
+    border-color: #01c0dc;
+}
+
+.nav-tabs>li>a:hover {
+    border-color: #01c0dc #01c0dc #01c0dc;
+}
+
+.nav-tabs .dropdown-menu {
+    background: #9aa4a6;
+}
+.dropdown-menu>li>a {
+    color: #FFF;
+}
