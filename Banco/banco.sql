@@ -1,7 +1,7 @@
-CREATE TABLE UsuarioChamado (
-	idusuario int NOT NULL,
-	idchamado int NOT NULL,
-	idnresponsavel BOOLEAN NOT NULL
+CREATE TABLE "UsuarioChamado" (
+	"idusuario" int NOT NULL,
+	"idchamado" int NOT NULL,
+	"idnresponsavel" BOOLEAN NOT NULL
 ) WITH (
   OIDS=FALSE
 );
@@ -99,3 +99,12 @@ ALTER TABLE "AtualizacaoChamado" ADD CONSTRAINT "AtualizacaoChamado_fk0" FOREIGN
 ALTER TABLE "AtualizacaoChamado" ADD CONSTRAINT "AtualizacaoChamado_fk1" FOREIGN KEY ("idusuario") REFERENCES "Usuario"("idusuario");
 
 
+INSERT INTO "Cliente"(
+'nome', 'telefone'
+) VALUES (?, ?
+);
+
+INSERT INTO "TipoChamado"(
+'descricao'
+) VALUES (?
+);
