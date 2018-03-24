@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core"
 
 @Component({
-  selector: 'cliente-root',
+  selector: 'cliente',
   templateUrl: './cliente.component.html',
   styleUrls: ['./cliente.Component.css']
 })
 export class ClienteComponent {
-  title = 'app';
+  title = 'cliente';
 
 
 }

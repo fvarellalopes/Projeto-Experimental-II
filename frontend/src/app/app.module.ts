@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 
 import { ClienteComponent } from './cliente/cliente.component';
 
+import { UsuarioComponent } from './usuario/usuario.component';
 
 
 
@@ -23,6 +24,7 @@ import { ClienteComponent } from './cliente/cliente.component';
     LoginComponent,
     HomeComponent,
     ClienteComponent,
+    UsuarioComponent,
 
   ],
   imports: [
@@ -31,9 +33,6 @@ import { ClienteComponent } from './cliente/cliente.component';
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],
-  bootstrap: [HomeComponent, LoginComponent, ClienteComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-
-export class ClienteModule {}
