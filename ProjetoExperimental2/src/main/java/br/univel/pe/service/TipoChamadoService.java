@@ -9,26 +9,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.univel.pe.entity.TipoChamado;
 import br.univel.pe.entity.Usuario;
+import br.univel.pe.repository.TipoChamadoRepository;
 import br.univel.pe.repository.UsuarioRepository;
 
-@Path("/usuarios")
+@Path("/tipoChamado")
 @Produces(MediaType.APPLICATION_JSON)
-public class UsuarioService {
+public class TipoChamadoService {
 
-	@GET
-	@Path("/{id}")
-	public Response getByEmail(@PathParam("id") Long id) {
-		Usuario usuario = new UsuarioRepository().find(id);
-		return Response.ok().entity(usuario).build();
-		
-	}
 	@GET
 	@Path("/list")
 	public Response list() {
-		List<Usuario> usuario = new UsuarioRepository().findAll();
-		return Response.ok().entity(usuario).build();
-		
+		List<TipoChamado> tipoChamadoList = new TipoChamadoRepository().findAll();
+		return Response.ok().entity(tipoChamadoList).build();
+
 	}
-	
+
 }
