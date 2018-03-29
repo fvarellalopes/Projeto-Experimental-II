@@ -40,7 +40,10 @@ public abstract class GenericRepository<T extends IEntidade<S>, S extends Serial
 	
 	@SuppressWarnings("unchecked")
 	public  void saveOrUpdate(T entity) {
-		getSession().saveOrUpdate(entity);
+		Session s = getSession();
+		s.getTransaction().begin();
+		s.saveOrUpdate(entity);
+		s.getTransaction().commit();
 	}
 
 	public  List<T> findAll(Order order, String... propertiesOrder) {
@@ -64,7 +67,10 @@ public abstract class GenericRepository<T extends IEntidade<S>, S extends Serial
 	public  void delete(S id) throws Exception {
 		T entity = find(id);
 		if (entity != null) {
-			getSession().delete(entity);
+			Session session = getSession();
+			session.getTransaction().begin();
+			session.delete(entity);
+			session.getTransaction().commit();
 		} else {
 			throw new Exception("Entidade não existe");
 		}

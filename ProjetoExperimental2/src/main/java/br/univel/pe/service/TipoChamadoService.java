@@ -25,5 +25,7 @@ public class TipoChamadoService {
 		return Response.ok().entity(tipoChamadoList).build();
 
 	}
+	
+	
 
 }

@@ -17,7 +17,7 @@ public class UsuarioRepository extends GenericRepository<Usuario, Long> implemen
 		return Usuario.class;
 	}
 
-	public Usuario carrega(Usuario usuario) {
+	public Usuario buscaPorEmail(Usuario usuario) {
 		return (Usuario) createCriteria().add(Restrictions.eq("login", usuario.getEmail())).uniqueResult();
 
 	}
