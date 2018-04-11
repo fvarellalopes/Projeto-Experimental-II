@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>Chamados</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+	</head>
+	<body>
+
+		<header>
+			<div class="container">
+				<h1>Chamados</h1>
+			</div>
+		</header>
+		<main>
+			<section class="container">
+				<h2>Meus chamados</h2>
+				<section class="container">
+					<h2 id="titulo-form">Adicionar novo chamado</h2>
+					<form id="form-adicionar">
+							<div class="grupo">
+									<label for="nome">Nome:</label>
+									<input id="nome" name="nome" type="text" placeholder="digite o nome" class="campo">
+							</div>
+							<div class="grupo">
+									<label for="peso">Chamado:</label>
+									<input id="problema" name="problema" type="text" placeholder="problema" class="campo campo-medio">
+							</div>
+							<div class="grupo">
+									<label for="contato">Contato:</label>
+									<input id="contato" name="contato" type="text" placeholder="contato" class="campo campo-medio">
+							</div>
+
+							<button id="adicionar-chamado" class="botao bto-principal">Adicionar</button>
+							<button id="buscar-chamado" class="botao bto-principal">Listar Chamados</button>
+					</form>
+			</section>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Problema</th>
+							<th>contato</th>
+						</tr>
+					</thead>
+					<tbody id="tabela-usuarios">
+						<tr class="usuario">
+							<td class="info-nome">Paulo</td>
+							<td class="info-problema">rede</td>
+							<td class="info-contato">t</td>
+						</tr>
+
+						<tr class="usuario">
+							<td class="info-nome">aaaa</td>
+							<td class="info-problema">rede</td>
+							<td class="info-contato">email</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</section>
+			<script type="text/javascript" src="js/form.js"></script>
+			<script type="text/javascript" src="js/busca-usuario.js"></script>
+		</main>
+
+	</body>
+</html>
