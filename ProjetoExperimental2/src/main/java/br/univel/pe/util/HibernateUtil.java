@@ -24,8 +24,8 @@ public class HibernateUtil {
 			if (System.getenv("HEROKU_POSTGRESQL_COPPER_URL") != null) {
 				URI dbUri;
 				try {
-					dbUri = new URI(System.getenv("HEROKU_POSTGRESQL_COPPER_URL"));
-
+					dbUri = new URI(System.getenv("DATABASE_URL"));
+					System.out.println(dbUri.toString());
 					String username = dbUri.getUserInfo().split(":")[0];
 					String password = dbUri.getUserInfo().split(":")[1];
 					String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
