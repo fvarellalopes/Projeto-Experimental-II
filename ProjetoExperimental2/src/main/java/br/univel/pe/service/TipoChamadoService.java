@@ -9,23 +9,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.univel.pe.entity.PerfilUsuario;
 import br.univel.pe.entity.TipoChamado;
 import br.univel.pe.entity.Usuario;
 import br.univel.pe.repository.TipoChamadoRepository;
 import br.univel.pe.repository.UsuarioRepository;
 
-@Path("/tipoChamado")
+@Path("/tiposChamado")
 @Produces(MediaType.APPLICATION_JSON)
-public class TipoChamadoService {
+public class TipoChamadoService extends GenericService<TipoChamado, Long> {
 
-	@GET
-	@Path("/list")
-	public Response list() {
-		List<TipoChamado> tipoChamadoList = new TipoChamadoRepository().findAll();
-		return Response.ok().entity(tipoChamadoList).build();
-
+	@Override
+	public Class getClazz() {
+		return TipoChamado.class;
 	}
 	
-	
-
 }
