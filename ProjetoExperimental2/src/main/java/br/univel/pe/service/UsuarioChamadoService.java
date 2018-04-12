@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import br.univel.pe.entity.UsuarioChamado;
 import br.univel.pe.entity.UsuarioChamadoId;
 
-@Path("/tiposChamado")
+@Path("/usuariosChamado")
 @Produces(MediaType.APPLICATION_JSON)
 public class UsuarioChamadoService extends GenericService<UsuarioChamado, UsuarioChamadoId> {
 

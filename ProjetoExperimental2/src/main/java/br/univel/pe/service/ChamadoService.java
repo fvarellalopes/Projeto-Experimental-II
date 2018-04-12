@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import br.univel.pe.entity.AtualizacaoChamado;
 import br.univel.pe.entity.Cliente;
 
-@Path("/atualizacoes")
+@Path("/chamados")
 @Produces(MediaType.APPLICATION_JSON)
 public class ChamadoService extends GenericService<AtualizacaoChamado, Long> {
 
