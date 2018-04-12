@@ -21,7 +21,7 @@ public class HibernateUtil {
 			// loads configuration and mappings
 			Configuration configuration = new Configuration().configure();
 			Properties properties = configuration.getProperties();
-			if (System.getenv("HEROKU_POSTGRESQL_COPPER_URL") != null) {
+			if (System.getenv("DATABASE_URL") != null) {
 				URI dbUri;
 				try {
 					dbUri = new URI(System.getenv("DATABASE_URL"));
