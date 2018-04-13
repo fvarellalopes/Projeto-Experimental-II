@@ -2,17 +2,17 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<body class="clientebackground">
 <form class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Cadastro de Cliente</legend>
+<legend align="center"> Cadastro de Cliente</legend>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="nome">Nome:</label>
-  <div class="col-md-4">
+  <label class="col-lg-4 col-md-4 col-sm-4  col-xs-5  control-label" for="nome">Nome:</label>
+  <div class="col-lg-4 col-md-4 col-sm-4  col-xs-5 ">
   <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" required="">
 
   </div>
@@ -20,86 +20,33 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="telefone">Telefone:</label>
-  <div class="col-md-4">
-  <input id="telefone" name="telefone" type="text" placeholder="" class="form-control input-md" required="">
+  <label class="col-lg-4 col-md-4 col-sm-4  col-xs-5  control-label" for="telefone">Telefone:</label>
+  <div class="col-lg-4 col-md-4 col-sm-4  col-xs-5 ">
+  <input id="telefone" name="telefone" type="text" placeholder="(99)999999999" class="form-control input-md" required="">
 
   </div>
 </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="email">E-mail:</label>
-  <div class="col-md-4">
-  <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
-
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cpf">CPF:</label>
-  <div class="col-md-4">
-  <input id="cpf" name="cpf" type="text" placeholder="" class="form-control input-md">
-
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="sexo">Sexo:</label>
-  <div class="col-md-4">
-    <select id="sexo" name="sexo" class="form-control">
-      <option value="Não informado">Não informado</option>
-      <option value="Masculino">Masculino</option>
-      <option value="Feminino">Feminino</option>
-    </select>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="dominio">Domínio:</label>
-  <div class="col-md-4">
-  <input id="dominio" name="dominio" type="text" placeholder="" class="form-control input-md">
-
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="data_nascimento">Data de Nascimento:</label>
-  <div class="col-md-4">
-  <input id="data_nascimento" name="data_nascimento" type="text" placeholder="" class="form-control input-md">
-
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cpf_vendedor">CPF:</label>
-  <div class="col-md-4">
-  <input id="cpf_vendedor" name="cpf_vendedor" type="text" placeholder="" class="form-control input-md">
-
-  </div>
-</div>
-
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="senha">Senha:</label>
-  <div class="col-md-4">
-    <input id="senha" name="senha" type="password" placeholder="" class="form-control input-md">
-
-  </div>
-</div>
 
 <!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cadastrar"></label>
-  <div class="col-md-4">
+<!-- <div class="form-group">
+  <label class="col-lg-4 col-md-4 col-sm-4  col-xs-5control-label" for="cadastrar"></label>
+  <label class="col-md-4 control-label" for="Voltar"></label>
+  <div class="col-lg-4 col-md-4 col-sm-4  col-xs-5">
     <button id="cadastrar" name="cadastrar" class="btn btn-primary">Cadastrar</button>
+      <button id="Voltar" name="Voltar" class="btn btn-default" style="background: blue">Voltar</button>
+  </div>
+</div> -->
+
+<div class="control-group">
+  <label class="control-label" class="col-lg-4 col-md-4 col-sm-4  col-xs-5control-label" for="button1id"></label>
+  <div class="controls">
+    <button id="cadastrar" name="cadastrar" class="btn btn-success">Confirmar Cadastro</button>
+    <button id="Voltar" name="Voltar" class="btn btn-danger">Cancelar</button>
   </div>
 </div>
+
 
 </fieldset>
 </form>
+<body>

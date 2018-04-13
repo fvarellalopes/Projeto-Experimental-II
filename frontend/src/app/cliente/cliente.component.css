@@ -1,0 +1,14 @@
+.clientebackground{
+    background-image: url(../imagens/background.jpg);
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:2;
+    width:100%;
+    min-height:100%;
+    height:auto; 
+    }

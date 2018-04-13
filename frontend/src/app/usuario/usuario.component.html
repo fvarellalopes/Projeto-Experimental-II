@@ -1,45 +1,117 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="./usuario\modalusuario.component.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<body class="usuariobackground">
 <form class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Cadastro Usuário</legend>
+<legend align="center">Cadastro Usuário</legend>
 
-<!-- Text input-->
+<!-- nome usuario-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="cod_user">Código Usuário</label>
-  <div class="col-md-4">
-  <input id="cod_user" name="cod_user" type="text" placeholder="codUser" class="form-control input-md">
+  <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="Nome">Nome</label>
+  <div class="col-lg-4 col-md-4 col-sm-8  col-xs-5">
+  <input id="Nome" name="Nome" type="text" placeholder="Nome" class="form-control input-md">
 
   </div>
 </div>
-
-<!-- Text input-->
+<!-- nome usuario-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="nome">Nome</label>
-  <div class="col-md-4">
-  <input id="nome" name="nome" type="text" placeholder="nome" class="form-control input-md" required="">
+  <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="telefone">Telefone</label>
+  <div class="col-lg-4 col-md-4 col-sm-3  col-xs-5">
+  <input id="nome" name="telefone" type="text" placeholder="telefone" class="form-control input-md">
 
   </div>
 </div>
+<!-- nome usuario-->
+<div class="form-group">
+  <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="email">Email</label>
+  <div class="col-lg-4 col-md-4 col-sm-3  col-xs-5">
+  <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
 
+  </div>
+</div>
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="senha">Senha</label>
-  <div class="col-md-4">
+  <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="senha">Senha</label>
+  <div class="col-lg-4 col-md-4 col-sm-4  col-xs-5">
     <input id="senha" name="senha" type="password" placeholder="senha" class="form-control input-md" required="">
 
   </div>
 </div>
 
-<!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="perfil">Perfil</label>
-  <div class="col-md-4">
+  <label class="col-sm-2  control-label" for="cliente">Cliente</label>
+  <div class="col-sm-6 form-group-group">
+    <div class="input-group">
+      <input id="Cliente" name="Cliente" class="form-control" placeholder="(digite o nome do Cliente)" type="text" required="">
+      <span class="input-group-addon"><button data-toggle="modal" id="pesquisarcliente"  class="btn btn-primary center-block">Pesquisar</button></span>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- line modal -->
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+
+			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
+		</div>
+		<div class="modal-body">
+
+            <!-- content goes here -->
+			<form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" id="exampleInputFile">
+                <p class="help-block">Example block-level help text here.</p>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Check me out
+                </label>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+		</div>
+		<div class="modal-footer">
+			<div class="btn-group btn-group-justified" role="group" aria-label="group button">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
+				</div>
+				<div class="btn-group btn-delete hidden" role="group">
+					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+
+
+
+<div class="form-group">
+  <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="perfil">Perfil</label>
+  <div class="col-lg-4 col-md-2 col-sm-4  col-xs-5">
     <select id="perfil" name="perfil" class="form-control">
       <option value="1">Administrador</option>
       <option value="2">Advogado</option>
@@ -48,17 +120,16 @@
 </div>
 
 <!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="cancelar"></label>
-  <div class="col-md-4">
-    <button id="cancelar" name="cancelar" class="btn btn-primary">Cancelar</button>
-  </div>
-
-  <label class="col-md-4 control-label" for="pesquisar"></label>
-  <div >
-    <button id="pesquisar" name="pesquisar" class="btn btn-primary">Pesquisar</button>
+<div class="control-group">
+  <label class="control-label" class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="button1id"></label>
+  <div class="controls">
+    <button id="cadastrar" name="cadastrar" class="btn btn-success">Confirmar Cadastro</button>
+    <button id="Voltar" name="Voltar" class="btn btn-danger">Cancelar</button>
   </div>
 </div>
 
+
 </fieldset>
 </form>
+
+</body>
