@@ -48,13 +48,13 @@
   <div class="col-sm-6 form-group-group">
     <div class="input-group">
       <input id="Cliente" name="Cliente" class="form-control" placeholder="(digite o nome do Cliente)" type="text" required="">
-      <span class="input-group-addon"><button data-toggle="modal" id="pesquisarcliente"  class="btn btn-primary center-block">Pesquisar</button></span>
+      <button data-toggle="modal" id="pesquisarcliente"  class="btn btn-primary center-block">Pesquisar</button>
+      <span class="input-group-addon"></span>
     </div>
   </div>
 </div>
 
-
-
+  <!-- INICIO DO MODEL  -->
 
 <!-- line modal -->
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -62,7 +62,7 @@
 	<div class="modal-content">
 		<div class="modal-header">
 
-			<h3 class="modal-title" id="lineModalLabel">My Modal</h3>
+			<h3 class="modal-title" id="lineModalLabel">Pesquisar Cliente</h3>
 		</div>
 		<div class="modal-body">
 
@@ -72,21 +72,6 @@
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Check me out
-                </label>
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
             </form>
 
 		</div>
@@ -95,19 +80,13 @@
 				<div class="btn-group" role="group">
 					<button type="button" class="btn btn-default" data-dismiss="modal"  role="button">Close</button>
 				</div>
-				<div class="btn-group btn-delete hidden" role="group">
-					<button type="button" id="delImage" class="btn btn-default btn-hover-red" data-dismiss="modal"  role="button">Delete</button>
-				</div>
-				<div class="btn-group" role="group">
-					<button type="button" id="saveImage" class="btn btn-default btn-hover-green" data-action="save" role="button">Save</button>
-				</div>
 			</div>
 		</div>
 	</div>
   </div>
 </div>
 
-
+  <!-- FINAL DO MODEL HTML -->
 
 <div class="form-group">
   <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="perfil">Perfil</label>
