@@ -1,0 +1,6 @@
+https://chamadin.herokuapp.com/rest/atualizacoes/
+https://chamadin.herokuapp.com/rest/chamados/
+https://chamadin.herokuapp.com/rest/clientes/
+https://chamadin.herokuapp.com/rest/perfis/
+https://chamadin.herokuapp.com/rest/tiposChamado/
+https://chamadin.herokuapp.com/rest/usuarios/
