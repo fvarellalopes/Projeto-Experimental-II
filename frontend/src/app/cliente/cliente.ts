@@ -1,5 +1,7 @@
 export class Cliente{
 
-    nome: string;
 
-}
+    constructor(
+      public  nome?: string,
+      public  telefone?: string) { }
+    }
