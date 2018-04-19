@@ -18,14 +18,10 @@
 
 $('#cliente').selectize({
   valueField: 'idCliente', labelField: 'nome', searchField: ['nome'], maxOptions: 10,
-  load: function (query, callback) {
-    if (!query.length) return callback();
-    if (query.length < 3) return callback();
-      $.ajax({
-        url: 'https://chamadin.herokuapp.com/rest/clientes/' + query, type: 'POST', dataType: 'json',
-        data: { maxresults: 10 },
-        error: function () { callback(); },
-        success: function (res) { callback(res); }
-      });
-  }
+  $.ajax({
+          url: 'https://chamadin.herokuapp.com/rest/clientes/search/', type: 'POST', dataType: 'json',
+          data: { maxresults: 10, "query": query},
+          error: function () { callback(); },
+          success: function (res) { callback(res); }
+        });
 });
