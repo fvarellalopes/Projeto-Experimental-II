@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ClienteService } from './cliente/client.service';
+import { UsuarioService } from './usuario/usuario.service';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { ClienteService } from './cliente/client.service';
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot()
   ],
-  providers: [ClienteService],
+  providers: [ClienteService,UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
