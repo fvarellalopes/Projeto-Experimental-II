@@ -12,25 +12,22 @@ export class ClienteComponent implements OnInit {
   title = 'cliente';
   public cliente = new Cliente();
 
-       constructor(
-      		private router: Router,
-          private clienteService: ClienteService
-        ) { }
-        ngOnInit() {
+     constructor(
+    		private router: Router,
+        private clienteService: ClienteService
+      ) { }
 
-        }
+      ngOnInit() {
 
+      }
 
      public save(){
-
        this.clienteService.addCliente(this.cliente)
        .subscribe(res => {
           console.log(res)
-      }, err => {
+        }, err => {
 
-      }
-    );
-
-     }
-
+        }
+      );
+    }
 }
