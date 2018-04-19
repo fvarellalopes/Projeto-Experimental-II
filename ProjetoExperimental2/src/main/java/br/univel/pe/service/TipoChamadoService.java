@@ -23,5 +23,6 @@ public class TipoChamadoService extends GenericService<TipoChamado, Long> {
 	public Class getClazz() {
 		return TipoChamado.class;
 	}
+
 	
 }

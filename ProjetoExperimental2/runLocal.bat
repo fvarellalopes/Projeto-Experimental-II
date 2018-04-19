@@ -1,3 +1,3 @@
-mvn clean package -U
-java -jar target/dependency/webapp-runner.jar target/*.war
+call mvn clean package -U
+call java -jar target/dependency/webapp-runner.jar target/*.war
 pause

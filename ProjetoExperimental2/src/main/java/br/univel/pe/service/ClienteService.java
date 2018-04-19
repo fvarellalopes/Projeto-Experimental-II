@@ -14,5 +14,10 @@ public class ClienteService extends GenericService<Cliente, Long> {
 	public Class getClazz() {
 		return Cliente.class;
 	}
+
+	@Override
+	protected String getPropertyDescricao() {
+		return "nome";
+	}
 	
 }

@@ -16,5 +16,5 @@ public class PerfilUsuarioService extends GenericService<PerfilUsuario, Long> {
 	public Class getClazz() {
 		return PerfilUsuario.class;
 	}
-	
+
 }

@@ -15,5 +15,7 @@ public class AtualizacaoChamadoService extends GenericService<AtualizacaoChamado
 	public Class getClazz() {
 		return AtualizacaoChamado.class;
 	}
+
+
 	
 }
