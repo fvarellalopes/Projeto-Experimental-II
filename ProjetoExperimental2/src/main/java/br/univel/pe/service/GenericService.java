@@ -26,8 +26,9 @@ import br.univel.pe.repository.GenericRepository;
 
 @Produces(MediaType.APPLICATION_JSON)
 public abstract class GenericService<T extends IEntidade<S>, S extends Serializable> {
-	
+
 	public abstract Class getClazz();
+
 	protected String getPropertyDescricao() {
 		return "descricao";
 	}
@@ -36,55 +37,68 @@ public abstract class GenericService<T extends IEntidade<S>, S extends Serializa
 	@Path("/{id}")
 	public Response getById(@PathParam("id") S id) {
 		T entidade = (T) getRepository().find(id);
-		return Response.ok().entity(entidade).build();		
+		return Response.ok().entity(entidade).build();
 	}
-	
+
+	@GET
+	@Path("/search/{query}")
+	public Response search(@PathParam("query") String query) {
+		Criteria crit = getRepository().createCriteria();
+		crit.setMaxResults(10);
+
+		crit.add(Restrictions.ilike(getPropertyDescricao(), query, MatchMode.START));
+
+		return Response.ok().entity(crit.list()).build();
+	}
+
 	@POST
 	@Path("/search")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response search(Map<String, String> data) {
 		Criteria crit = getRepository().createCriteria();
-		if(data.containsKey("maxResults")) {
+		if (data.containsKey("maxResults")) {
 			crit.setMaxResults(Integer.parseInt(data.get("maxResults")));
 		}
-		if(data.containsKey("query")) {
+		if (data.containsKey("query")) {
 			crit.add(Restrictions.ilike(getPropertyDescricao(), data.get("query"), MatchMode.START));
 		}
-		
+
 		return Response.ok().entity(crit.list()).build();
 	}
-	
+
 	@GET
 	public Response list() {
 		List<T> tList = getRepository().findAll();
 		return Response.ok().entity(tList).build();
-		
+
 	}
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(T t) {
-		 getRepository().saveOrUpdate(t);
+		getRepository().saveOrUpdate(t);
 		return Response.ok().entity(t).build();
 	}
+
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response deleteUsuario(T t) {
-		 try {
+		try {
 			getRepository().delete(t.getId());
 		} catch (Exception e) {
 			return Response.serverError().entity(e.getMessage()).build();
 		}
 		return Response.ok().entity(t.getId()).build();
 	}
-	
+
 	protected GenericRepository getRepository() {
 		return new GenericRepository<T, S>() {
 
 			@Override
 			public Class<T> getClazz() {
-				return GenericService.this.getClazz() ;
+				return GenericService.this.getClazz();
 			}
 		};
 	}
-	
+
 }
