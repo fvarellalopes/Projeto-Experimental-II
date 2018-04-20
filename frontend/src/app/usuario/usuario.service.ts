@@ -6,6 +6,7 @@ import { Usuario } from './usuario';
 import { HttpClientModule } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+
 @Injectable()
 export class UsuarioService {
 
@@ -16,7 +17,7 @@ export class UsuarioService {
 
   public addUsuario(body: Object): Observable<Usuario[]> {
       const bodyString = JSON.stringify(body);
-      const headers = new Headers({ 'Content-Type': 'application/json' });
+      const headers = new Headers({ 'Content-Type': 'application/json'});
       const options = new RequestOptions({ headers: headers });
 
       console.log(body);

@@ -28,8 +28,22 @@ $('#cliente').selectize({
     if (!query.length) return callback();
     if (query.length < 3) return callback();
       $.ajax({
-        url: 'https://chamadin.herokuapp.com/rest/clientes/' + query, type: 'POST', dataType: 'json',
-        data: { maxresults: 10 },
+        url: 'https://chamadin.herokuapp.com/rest/clientes/search/' + query, type: 'GET', dataType: 'json',
+        // data: { maxresults: 10 },
+        error: function () { callback(); },
+        success: function (res) { callback(res); }
+      });
+  }
+});
+
+$('#perfilacesso').selectize({
+  valueField: 'idPerfilUsuario', labelField: 'descricao', searchField: ['descricao'], maxOptions: 10,
+  load: function (query, callback) {
+    if (!query.length) return callback();
+    if (query.length < 3) return callback();
+      $.ajax({
+        url: 'https://chamadin.herokuapp.com/rest/perfis/search/' + query, type: 'GET', dataType: 'json',
+        // data: { maxresults: 10 },
         error: function () { callback(); },
         success: function (res) { callback(res); }
       });
