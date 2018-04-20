@@ -23,7 +23,8 @@ export class UsuarioComponent implements OnInit {
       }
 
      public save(){
-       this.usuarioService.addUsuario(this.usuario)
+       console.log(<HTMLElement>document.getElementById('cliente'))
+      this.usuarioService.addUsuario(this.usuario)
        .subscribe(res => {
           console.log(res)
         }, err => {

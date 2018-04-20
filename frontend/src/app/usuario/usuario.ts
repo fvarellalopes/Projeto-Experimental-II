@@ -1,3 +1,4 @@
+
 export class Usuario{
 
 
@@ -6,6 +7,6 @@ export class Usuario{
       public telefone?: string,
       public email?: string,
       public senha?: string,
-      public cliente?: string,
-      public perfilacesso?: string  ) { }
+      public cliente?: object,
+      public perfilacesso?: object  ) { }
     }

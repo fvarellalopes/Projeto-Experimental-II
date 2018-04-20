@@ -18,7 +18,7 @@
 <div class="form-group">
   <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="Nome">Nome</label>
   <div class="col-lg-4 col-md-4 col-sm-8  col-xs-5">
-  <input id="nome" name="nome" type="text" placeholder="Nome" class="form-control input-md">
+  <input id="nome" name="nome" type="text" placeholder="Nome"  [(ngModel)]="usuario.nome" class="form-control input-md">
 
   </div>
 </div>
@@ -26,7 +26,7 @@
 <div class="form-group">
   <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="telefone">Telefone</label>
   <div class="col-lg-4 col-md-4 col-sm-3  col-xs-5">
-  <input id="telefone" name="telefone" type="text" placeholder="(99) 9 9999-9999" class="form-control input-md">
+  <input id="telefone" name="telefone" type="text" placeholder="(99) 9 9999-9999"  [(ngModel)]="usuario.telefone" class="form-control input-md">
 
   </div>
 </div>
@@ -34,7 +34,7 @@
 <div class="form-group">
   <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="email">Email</label>
   <div class="col-lg-4 col-md-4 col-sm-3  col-xs-5">
-  <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md">
+  <input id="email" name="email" type="text" placeholder="Email"    [(ngModel)]="usuario.email" class="form-control input-md">
 
   </div>
 </div>
@@ -42,7 +42,7 @@
 <div class="form-group">
   <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label" for="senha">Senha</label>
   <div class="col-lg-4 col-md-4 col-sm-4  col-xs-5">
-    <input id="senha" name="senha" type="password" placeholder="senha" class="form-control input-md" required="">
+    <input id="senha" name="senha" type="password" placeholder="senha"  [(ngModel)]="usuario.senha" class="form-control input-md" required="">
 
   </div>
 </div>
@@ -50,14 +50,14 @@
 <div class="form-group">
   <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label">Cliente</label>
   <div class="col-lg-4 col-md-4 col-sm-8  col-xs-5">
-  <select id="cliente" name="cliente" placeholder="Cliente" ></select>
+  <select id="cliente" type="" name="cliente" placeholder="Cliente"  [(ngModel)]="usuario.cliente" ></select>
   </div>
 </div>
 
 <div class="form-group">
   <label class="col-lg-4 col-md-4 col-sm-2  col-xs-5 control-label">Perfil do Usuario</label>
   <div class="col-lg-4 col-md-4 col-sm-8  col-xs-5">
-  <select id="perfilacesso" name="perfis" placeholder="Perfil de acesso" ></select>
+  <select id="perfilacesso" name="perfis" placeholder="Perfil de acesso"  [(ngModel)]="usuario.perfilacesso"></select>
   </div>
 </div>
 
@@ -73,5 +73,7 @@
 
 </fieldset>
 </form>
+
+{{usuario.cliente}}
 
 </body>
