@@ -19,7 +19,7 @@
 $('#cliente').selectize({
   valueField: 'idCliente', labelField: 'nome', searchField: ['nome'], maxOptions: 10,
   $.ajax({
-          url: 'https://chamadin.herokuapp.com/rest/clientes/search/', type: 'POST', dataType: 'json',
+          url: 'https://chamadin.herokuapp.com/clientes/search/', type: 'POST', dataType: 'json',
           data: { maxresults: 10, "query": query},
           error: function () { callback(); },
           success: function (res) { callback(res); }
