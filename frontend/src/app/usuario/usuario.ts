@@ -1,3 +1,5 @@
+import { PerfilUsuario } from './perfilUsuario';
+import { Cliente } from '../cliente/cliente';
 
 export class Usuario{
 
@@ -7,6 +9,6 @@ export class Usuario{
       public telefone?: string,
       public email?: string,
       public senha?: string,
-      public cliente?: object,
-      public perfilacesso?: object  ) { }
+      public cliente?: Cliente,
+      public perfilUsuario?: PerfilUsuario  ) { }
     }
