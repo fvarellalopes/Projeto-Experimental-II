@@ -21,13 +21,13 @@ export class ChamadoComponent implements OnInit {
 
       }
 
-    //  public save(){
-    //    this.clienteService.addCliente(this.cliente)
-    //    .subscribe(res => {
-    //       console.log(res)
-    //     }, err => {
-    //
-    //     }
-    //   );
-    // }
+     public save(){
+       this.chamadoService.addChamado(this.chamado)
+       .subscribe(res => {
+          console.log(res)
+        }, err => {
+
+        }
+      );
+    }
 }

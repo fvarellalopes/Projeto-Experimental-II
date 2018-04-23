@@ -21,12 +21,30 @@ export class ClienteComponent implements OnInit {
 
       }
 
+      public limparcampos(){
+
+        this.cliente = new Cliente();
+
+      }
+
+      public abrirSucesso(){
+         document.getElementById("sucessogravar").style.display = 'block';
+      }
+
+      public Fecharsucesso(){
+         document.getElementById("sucessogravar").style.display = 'none';
+      }
+
+
      public save(){
+        this.Fecharsucesso();
        this.clienteService.addCliente(this.cliente)
        .subscribe(res => {
           console.log(res)
+          this.limparcampos();
+          this.abrirSucesso();
         }, err => {
-
+          this.limparcampos()
         }
       );
     }

@@ -1,7 +1,12 @@
+import { Cliente } from '../cliente/cliente';
 export class Chamado{
 
 
     constructor(
-      public  nome?: string,
-      public  telefone?: string) { }
+      public  descricao?: string,
+      public  titulo?: string,
+      public  data?: string,
+      public situacao?: number,
+      public  prioridade?: number,
+      public cliente?: Cliente) { }
     }

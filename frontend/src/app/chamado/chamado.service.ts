@@ -8,42 +8,33 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable()
- export class ChamadoService { }
-//
-//   constructor(private http: Http) { }
-//
-//   public clientesUrl = 'https://chamadin.herokuapp.com/rest/clientes/';
-//
-//
-//   public addCliente(body: Object): Observable<Cliente[]> {
-//       const bodyString = JSON.stringify(body);
-//       const headers = new Headers({ 'Content-Type': 'application/json' });
-//       const options = new RequestOptions({ headers: headers });
-//
-//       console.log(body);
-//
-//       return this.http.post(this.clientesUrl, body, options)
-//         .map((res: Response) => res.json());
-//     }
-//
-//             getcliente (): Observable<Cliente[]> {
-//
-//             return this.http.get(this.clientesUrl)
-//             .map((res: Response) => res.json());
-//
-//
-//
-//               }
-//
-//
-//               private handleError(error: Response) {
-//
-//                 console.error(error);
-//
-//                 return Observable.throw(error.json().error || 'Server error');
-//
-//             }
-//
-//
-//
-// }
+ export class ChamadoService {
+
+  constructor(private http: Http) { }
+
+  public chamadosUrl = 'https://chamadin.herokuapp.com/rest/chamados/';
+
+
+  public addChamado(body: Object): Observable<Chamado[]> {
+      const bodyString = JSON.stringify(body);
+      const headers = new Headers({ 'Content-Type': 'application/json' });
+      const options = new RequestOptions({ headers: headers });
+
+      console.log(body);
+
+      return this.http.post(this.chamadosUrl, body, options)
+        .map((res: Response) => res.json());
+    }
+
+
+              private handleError(error: Response) {
+
+                console.error(error);
+
+                return Observable.throw(error.json().error || 'Server error');
+
+            }
+
+
+
+}

@@ -30,12 +30,31 @@ export class UsuarioComponent implements OnInit {
         console.log(this.perfis);
       }
 
+      public limparcampos(){
+
+        this.usuario = new Usuario();
+
+      }
+
+      public abrirSucesso(){
+         document.getElementById("sucessogravar").style.display = 'block';
+      }
+
+      public Fecharsucesso(){
+         document.getElementById("sucessogravar").style.display = 'none';
+      }
+
+
      public save(){
+       this.Fecharsucesso();
        console.log(<HTMLElement>document.getElementById('cliente'))
       this.usuarioService.addUsuario(this.usuario)
        .subscribe(res => {
           console.log(res)
+          this.limparcampos();
+          this.abrirSucesso();
         }, err => {
+          this.limparcampos()
 
         }
       );
