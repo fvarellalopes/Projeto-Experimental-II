@@ -3,6 +3,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Chamado } from './chamado';
+import { Cliente } from '../cliente/cliente';
+import { TipoChamado } from './tipoChamado';
 import { HttpClientModule } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -34,7 +36,19 @@ import { catchError, map, tap } from 'rxjs/operators';
                 return Observable.throw(error.json().error || 'Server error');
 
             }
+            getClientes(): Observable<Cliente[]> {
+                 const headers = new Headers({ 'Content-Type': 'application/json'});
+                 const options = new RequestOptions({ headers: headers });
 
+                 return this.http.get('https://chamadin.herokuapp.com/rest/clientes/')
+                     .map((response:Response) => response.json());
 
+                   }
+            getSChamado(): Observable<TipoChamado[]> {
+                        const headers = new Headers({ 'Content-Type': 'application/json'});
+                        const options = new RequestOptions({ headers: headers });
 
+                        return this.http.get('https://chamadin.herokuapp.com/rest/tiposChamado/')
+                            .map((response:Response) => response.json());
+                    }
 }

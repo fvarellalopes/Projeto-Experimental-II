@@ -15,6 +15,10 @@
     						<input id="titulo" name="titulo" type="text" placeholder="Titulo do chamado"   [(ngModel)]="chamado.titulo" class="form-control">
 
             </div>
+            <div class="form-group">
+            <label>Descrição</label>
+            <textarea  id="descricao" name="descricao" placeholder="Descrição do chamado" rows="3"  [(ngModel)]="chamado.descricao" class="form-control"></textarea>
+            </div>
 						<div class="row">
 							<div class="col-sm-4 form-group">
                 <label>Cliente</label>
@@ -24,18 +28,35 @@
               </select>
 							</div>
 							<div class="col-sm-4 form-group">
-								<label>State</label>
-								<input type="text" placeholder="Enter State Name Here.." class="form-control">
+								<label>Situação</label>
+                    <select name="situacao" class="form-control" [(ngModel)]="chamado.situacao" >
+                      <option value="1">Novo</option>
+                      <option value="2">Aguardando</option>
+                      <option value="3">Em Execução</option>
+                      <option value="4">Concluído</option>
+                      <option value="5">Finalizado</option>
+                    </select>
 							</div>
 							<div class="col-sm-4 form-group">
-								<label>Zip</label>
-								<input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+								<label>Prioridade</label>
+                <select name="situacao" class="form-control" [(ngModel)]="chamado.prioridade" >
+                  <option value="1">Alta</option>
+                  <option value="2">Media</option>
+                  <option value="3">baixa</option>
+                </select>
 							</div>
+              <div class="col-sm-4 form-group">
+                <label>Data</label>
+                <input id="data" name="data" type="date" [(ngModel)]="chamado.data" class="form-control">
+							</div>
+              <div class="col-sm-4 form-group">
+                <label>Tipo Chamado</label>
+                <select id="idTipoChamado" name="idTipoChamado" class="form-control" [(ngModel)]="chamado.tipoChamado">
+                  <option value="0" selected>Selecione</option>
+                  <option *ngFor="let c of clientes" [ngValue]="c">{{c.descricao}}</option>
+              </select>
+              </div>
 						</div>
-	          <div class="form-group">
-            <label>Descrição</label>
-            <textarea  id="descricao" name="descricao" placeholder="Descrição do chamado" rows="3"  [(ngModel)]="chamado.descricao" class="form-control"></textarea>
-          </div>
           <div class="controls">
             <button id="cadastrar" name="cadastrar" (click)="save()" class="btn btn-success">Confirmar Cadastro</button>
             <button id="Voltar" name="Voltar" class="btn btn-danger">Cancelar</button>
@@ -46,3 +67,8 @@
 	</div>
 	</div>
 </body>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#idTipoChamado').select2();
+  });
+</script>

@@ -1,4 +1,5 @@
 import { Cliente } from '../cliente/cliente';
+import { TipoChamado } from './tipoChamado';
 export class Chamado{
 
 
@@ -8,5 +9,6 @@ export class Chamado{
       public  data?: string,
       public situacao?: number,
       public  prioridade?: number,
-      public cliente?: Cliente) { }
+      public cliente?: Cliente,
+      public tipoChamado?: TipoChamado ) { }
     }
