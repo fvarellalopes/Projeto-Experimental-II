@@ -14,9 +14,10 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ChamadoComponent } from './chamado/chamado.component';
 import { ClienteService } from './cliente/client.service';
 import { UsuarioService } from './usuario/usuario.service';
-
+import { ChamadoService } from './chamado/chamado.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UsuarioService } from './usuario/usuario.service';
     LoginComponent,
     HomeComponent,
     ClienteComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ChamadoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { UsuarioService } from './usuario/usuario.service';
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot()
   ],
-  providers: [ClienteService,UsuarioService],
+  providers: [ClienteService,UsuarioService,ChamadoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

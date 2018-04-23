@@ -7,6 +7,7 @@ import {AppComponent} from './app.component'
 import {HomeComponent} from './home/home.component'
 import {ClienteComponent} from './cliente/cliente.component'
 import {UsuarioComponent} from './usuario/usuario.component'
+import {ChamadoComponent} from './chamado/chamado.component'
 
 
 
@@ -15,5 +16,6 @@ export const ROUTES: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'cliente', component: ClienteComponent},
   {path: 'usuario', component: UsuarioComponent},
+  {path: 'chamado', component: ChamadoComponent},
 
 ];
