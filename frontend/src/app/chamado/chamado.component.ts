@@ -27,12 +27,38 @@ export class ChamadoComponent implements OnInit {
           console.log(this.getSChamado);
       }
 
+      public limparcampos(){
+
+        this.chamado = new Chamado();
+
+      }
+
+      public abrirSucesso(){
+         document.getElementById("sucessogravar").style.display = 'block';
+      }
+
+      public Fecharsucesso(){
+         document.getElementById("sucessogravar").style.display = 'none';
+      }
+
+      public errogravar(){
+         document.getElementById("errogravar").style.display = 'block';
+      }
+      public Fecharerro(){
+         document.getElementById("errogravar").style.display = 'none';
+      }
+
      public save(){
+       this.Fecharsucesso();
        this.chamadoService.addChamado(this.chamado)
        .subscribe(res => {
           console.log(res)
+          this.limparcampos();
+          this.abrirSucesso();
         }, err => {
-
+          this.limparcampos()
+          this.errogravar();
+          this.Fecharerro();
         }
       );
     }

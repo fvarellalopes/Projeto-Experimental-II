@@ -44,11 +44,13 @@ import { catchError, map, tap } from 'rxjs/operators';
                      .map((response:Response) => response.json());
 
                    }
-            getSChamado(): Observable<TipoChamado[]> {
+
+          getSChamado(): Observable<TipoChamado[]> {
                         const headers = new Headers({ 'Content-Type': 'application/json'});
                         const options = new RequestOptions({ headers: headers });
 
                         return this.http.get('https://chamadin.herokuapp.com/rest/tiposChamado/')
                             .map((response:Response) => response.json());
                     }
+          
 }

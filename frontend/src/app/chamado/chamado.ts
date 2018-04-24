@@ -1,5 +1,7 @@
-import { Cliente } from '../cliente/cliente';
 import { TipoChamado } from './tipoChamado';
+import { Cliente } from '../cliente/cliente';
+
+
 export class Chamado{
 
 
