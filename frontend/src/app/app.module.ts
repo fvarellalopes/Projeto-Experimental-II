@@ -18,6 +18,8 @@ import { ChamadoComponent } from './chamado/chamado.component';
 import { ClienteService } from './cliente/client.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { ChamadoService } from './chamado/chamado.service';
+import { MenuComponent } from './menu/menu.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ChamadoService } from './chamado/chamado.service';
     HomeComponent,
     ClienteComponent,
     UsuarioComponent,
-    ChamadoComponent
+    ChamadoComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
