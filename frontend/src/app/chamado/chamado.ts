@@ -1,5 +1,6 @@
 import { TipoChamado } from './tipoChamado';
 import { Cliente } from '../cliente/cliente';
+import { Usuario } from '../usuario/usuario';
 
 
 export class Chamado{
@@ -12,5 +13,6 @@ export class Chamado{
       public situacao?: number,
       public  prioridade?: number,
       public cliente?: Cliente,
+      public usuario?: Usuario,
       public tipoChamado?: TipoChamado ) { }
     }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Chamado } from './chamado';
 import { Cliente } from '../cliente/cliente';
+import { Usuario } from '../usuario/usuario';
 import { TipoChamado } from './tipoChamado';
 import { HttpClientModule } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -45,12 +46,18 @@ import { catchError, map, tap } from 'rxjs/operators';
 
                    }
 
-          getSChamado(): Observable<TipoChamado[]> {
+            getSChamado(): Observable<TipoChamado[]> {
                         const headers = new Headers({ 'Content-Type': 'application/json'});
                         const options = new RequestOptions({ headers: headers });
 
                         return this.http.get('https://chamadin.herokuapp.com/rest/tiposChamado/')
                             .map((response:Response) => response.json());
                     }
-          
+            getUsuario(): Observable<TipoChamado[]> {
+                        const headers = new Headers({ 'Content-Type': 'application/json'});
+                        const options = new RequestOptions({ headers: headers });
+
+                          return this.http.get('https://chamadin.herokuapp.com/rest/usuarios/')
+                                    .map((response:Response) => response.json());
+                              }
 }

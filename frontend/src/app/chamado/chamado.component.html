@@ -63,10 +63,10 @@
                   <option value="3">baixa</option>
                 </select>
 							</div>
-              <div class="col-sm-4 form-group">
+              <!-- <div class="col-sm-4 form-group">
                 <label>Data</label>
                 <input id="data" name="data" type="date" [(ngModel)]="chamado.data" class="form-control">
-							</div>
+							</div> -->
               <div class="col-sm-4 form-group">
                 <label>Tipo Chamado</label>
                 <select id="idTipoChamado" name="tipoChamado" class="form-control" [(ngModel)]="chamado.tipoChamado">
@@ -74,6 +74,13 @@
                   <option *ngFor="let c of schamado" [ngValue]="c">{{c.descricao}}</option>
               </select>
               </div>
+              <div class="col-sm-4 form-group">
+                <label>Usuario</label>
+                <select id="idUsuario" name="usuario" class="form-control" [(ngModel)]="chamado.usuario">
+                  <option value="0" selected>Selecione</option>
+                  <option *ngFor="let c of usuario" [ngValue]="c">{{c.nome}}</option>
+              </select>
+							</div>
 						</div>
           <div class="controls">
             <button id="cadastrar" name="cadastrar" (click)="save()" class="btn btn-success">Confirmar Cadastro</button>

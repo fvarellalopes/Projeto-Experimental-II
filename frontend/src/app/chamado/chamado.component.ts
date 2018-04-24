@@ -3,6 +3,7 @@ import { ChamadoService } from './chamado.service';
 import { Chamado } from './chamado';
 import { Router } from '@angular/router';
 import { Cliente } from '../cliente/cliente';
+import { Usuario } from '../usuario/usuario';
 import { TipoChamado } from './tipoChamado';
 
 @Component({
@@ -15,6 +16,7 @@ export class ChamadoComponent implements OnInit {
   public chamado = new Chamado();
       clientes: Cliente[];
       schamado: TipoChamado[];
+      usuario: Usuario[];
 
      constructor(
     		private router: Router,
@@ -24,6 +26,7 @@ export class ChamadoComponent implements OnInit {
       ngOnInit() {
           this.getClientes();
           this.getSChamado();
+          this.getUsuario();
           console.log(this.getSChamado);
       }
 
@@ -50,15 +53,16 @@ export class ChamadoComponent implements OnInit {
 
      public save(){
        this.Fecharsucesso();
+       this.Fecharerro();
        this.chamadoService.addChamado(this.chamado)
        .subscribe(res => {
           console.log(res)
           this.limparcampos();
           this.abrirSucesso();
         }, err => {
-          this.limparcampos()
           this.errogravar();
-          this.Fecharerro();
+          this.limparcampos()
+
         }
       );
     }
@@ -88,4 +92,16 @@ export class ChamadoComponent implements OnInit {
                             console.log(err);
                         })
         }
+        getUsuario(): void {
+              this.chamadoService.getUsuario()
+                  .subscribe(
+                      usuario => {
+                          this.usuario = usuario;
+                          console.log(usuario);
+                      }, //Bind to view
+                                  err => {
+                              // Log errors if any
+                              console.log(err);
+                          })
+          }
 }
