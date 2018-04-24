@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,10 +22,10 @@ public class AtualizacaoChamado implements Serializable, IEntidade<Long> {
 	private String descricao;
 	private Timestamp data;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch=FetchType.EAGER)
 	private Usuario usuario;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch=FetchType.EAGER)
 	private Chamado chamado;
 
 	public Long getIdAtualizacaoChamado() {

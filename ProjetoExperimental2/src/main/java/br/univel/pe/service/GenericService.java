@@ -15,10 +15,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 import com.google.gson.JsonObject;
 
 import br.univel.pe.entity.IEntidade;
@@ -43,19 +46,28 @@ public abstract class GenericService<T extends IEntidade<S>, S extends Serializa
 	@GET
 	@Path("/search/{query}")
 	public Response search(@PathParam("query") String query) {
-		Criteria crit = getRepository().createCriteria();
-		crit.setMaxResults(10);
+		GenericRepository repository = getRepository();
+		Session s = repository.getSession();
+		try {
+			Criteria crit = repository.createCriteria(s);
+			crit.setMaxResults(10);
 
-		crit.add(Restrictions.ilike(getPropertyDescricao(), query, MatchMode.START));
+			crit.add(Restrictions.ilike(getPropertyDescricao(), query, MatchMode.START));
 
-		return Response.ok().entity(crit.list()).build();
+			return Response.ok().entity(crit.list()).build();
+		} finally {
+			repository.closeSession(s);
+		}
 	}
 
 	@POST
 	@Path("/search")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response search(Map<String, String> data) {
-		Criteria crit = getRepository().createCriteria();
+		GenericRepository repository = getRepository();
+		Session s = repository.getSession();
+		try {
+		Criteria crit = repository.createCriteria(s);
 		if (data.containsKey("maxResults")) {
 			crit.setMaxResults(Integer.parseInt(data.get("maxResults")));
 		}
@@ -64,11 +76,15 @@ public abstract class GenericService<T extends IEntidade<S>, S extends Serializa
 		}
 
 		return Response.ok().entity(crit.list()).build();
+		}finally {
+			repository.closeSession(s);
+		}
 	}
 
 	@GET
+	@JacksonFeatures(serializationEnable =  { SerializationFeature.INDENT_OUTPUT })
 	public Response list() {
-		List<T> tList = getRepository().findAll();
+		List<T> tList = getRepository().list();
 		return Response.ok().entity(tList).build();
 
 	}

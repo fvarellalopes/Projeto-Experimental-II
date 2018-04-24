@@ -24,11 +24,11 @@ public class UsuarioChamado implements Serializable, IEntidade<UsuarioChamadoId>
 	@EmbeddedId
 	private UsuarioChamadoId id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne( fetch=FetchType.EAGER)
 	@MapsId("usuarioId")
 	private Usuario usuario;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("chamadoId")
 	private Chamado chamado;
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,16 +28,16 @@ public class Chamado implements Serializable, IEntidade<Long> {
 	private Timestamp data;
 	private int situacao;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch=FetchType.EAGER)
 	private Cliente cliente;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch=FetchType.EAGER)
 	private Usuario usuario;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch=FetchType.EAGER)
 	private TipoChamado tipoChamado;
 
-	@OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
 	private List<UsuarioChamado> usuarios = new ArrayList<>();
 
 	public TipoChamado getTipoChamado() {

@@ -19,90 +19,143 @@ public abstract class GenericRepository<T extends IEntidade<S>, S extends Serial
 	}
 
 	public abstract Class<T> getClazz();
-	
+
 	public GenericRepository() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Criteria createCriteria() {
-		return getSession().createCriteria(getClazz());
+	public Criteria createCriteria(Session s) {
+		return s.createCriteria(getClazz());
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<T> list() {
-		return createCriteria().list();
-	}
-
-	@SuppressWarnings("unchecked")
-	public  S save(T entity) {
-		return (S) getSession().save(entity);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public  void saveOrUpdate(T entity) {
 		Session s = getSession();
-		s.getTransaction().begin();
-		s.saveOrUpdate(entity);
-		s.getTransaction().commit();
+		try {
+			return createCriteria(s).list();
+		} finally {
+			closeSession(s);
+		}
 	}
 
-	public  List<T> findAll(Order order, String... propertiesOrder) {
-		Criteria criteria = getSession().createCriteria(getClazz());
+	public void closeSession(Session s) {
 
-		for (String propertyOrder : propertiesOrder) {
-			if (order.isAscending()) {
-				criteria.addOrder(org.hibernate.criterion.Order.asc(propertyOrder));
-			} else {
-				criteria.addOrder(org.hibernate.criterion.Order.desc(propertyOrder));
+		if (s != null && (s.isConnected() || s.isOpen())) {
+			s.flush();
+			s.close();
+		}
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public S save(T entity) {
+		Session s = getSession();
+		try {
+			return (S) s.save(entity);
+		} finally {
+			closeSession(s);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public void saveOrUpdate(T entity) {
+		Session s = getSession();
+		try {
+			s.getTransaction().begin();
+			s.saveOrUpdate(entity);
+			s.getTransaction().commit();
+		} finally {
+			closeSession(s);
+		}
+	}
+
+	public List<T> findAll(Order order, String... propertiesOrder) {
+		Session session = getSession();
+		try {
+			Criteria criteria = session.createCriteria(getClazz());
+
+			for (String propertyOrder : propertiesOrder) {
+				if (order.isAscending()) {
+					criteria.addOrder(org.hibernate.criterion.Order.asc(propertyOrder));
+				} else {
+					criteria.addOrder(org.hibernate.criterion.Order.desc(propertyOrder));
+				}
 			}
-		}
-		return criteria.list();
-	}
-
-	@SuppressWarnings("unchecked")
-	public  T merge(T entity) {
-		return (T) getSession().merge(entity);
-	}
-
-	public  void delete(S id) throws Exception {
-		T entity = find(id);
-		if (entity != null) {
-			Session session = getSession();
-			session.getTransaction().begin();
-			session.delete(entity);
-			session.getTransaction().commit();
-		} else {
-			throw new Exception("Entidade não existe");
+			return criteria.list();
+		} finally {
+			closeSession(session);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public  T find(S id) {
-		return (T) getSession().get(getClazz(), id);
+	public T merge(T entity) {
+		Session session = getSession();
+		try {
+			return (T) session.merge(entity);
+		} finally {
+			closeSession(session);
+		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public  List<T> findByProperty(String propertyName, Object value) {
-		return createCriteria().add(Restrictions.eq(propertyName, value)).list();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public  List<T> findByPropertyContainsIgnoreCase(String propertyName, String value) {
-		return createCriteria().add(Restrictions.ilike(propertyName, value, MatchMode.ANYWHERE)).list();
-	}
-
-	@SuppressWarnings("unchecked")
-	public  List<T> findByProperty(String propertyName, String value, MatchMode matchMode) {
-		if (matchMode != null) {
-			return createCriteria().add(Restrictions.ilike(propertyName, value, matchMode)).list();
-		} else {
-			return createCriteria().add(Restrictions.ilike(propertyName, value, MatchMode.EXACT)).list();
+	public void delete(S id) throws Exception {
+		Session session = getSession();
+		T entity = (T) session.get(getClazz(), id);
+		try {
+			if (entity != null) {
+				session.getTransaction().begin();
+				session.delete(entity);
+				session.getTransaction().commit();
+			} else {
+				throw new Exception("Entidade não existe");
+			}
+		} finally {
+			closeSession(session);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public  List<T> findAll() {
-		return createCriteria().list();
+	public T find(S id) {
+		Session session = getSession();
+		try {
+			return (T) session.get(getClazz(), id);
+		} finally {
+			closeSession(session);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<T> findByProperty(String propertyName, Object value) {
+		Session s = getSession();
+		try {
+			return createCriteria(s).add(Restrictions.eq(propertyName, value)).list();
+		} finally {
+			closeSession(s);
+			;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<T> findByPropertyContainsIgnoreCase(String propertyName, String value) {
+		Session s = getSession();
+		try {
+			return createCriteria(s).add(Restrictions.ilike(propertyName, value, MatchMode.ANYWHERE)).list();
+		} finally {
+			closeSession(s);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<T> findByProperty(String propertyName, String value, MatchMode matchMode) {
+		Session s = getSession();
+		try {
+			if (matchMode != null) {
+				return createCriteria(s).add(Restrictions.ilike(propertyName, value, matchMode)).list();
+			} else {
+				return createCriteria(s).add(Restrictions.ilike(propertyName, value, MatchMode.EXACT)).list();
+			}
+		} finally {
+			closeSession(s);
+		}
 	}
 
 }

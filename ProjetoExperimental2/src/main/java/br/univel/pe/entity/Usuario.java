@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,13 +28,13 @@ public class Usuario implements Serializable, IEntidade<Long> {
 	private String nome;
 	private String telefone;
 
-	@ManyToOne
+	@ManyToOne( fetch=FetchType.EAGER)
 	private Cliente cliente;
 
-	@ManyToOne
+	@ManyToOne( fetch=FetchType.EAGER)
 	private PerfilUsuario perfilUsuario;
 
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true, fetch=FetchType.EAGER)
 	private List<UsuarioChamado> chamados = new ArrayList<>();
 
 	public List<UsuarioChamado> getChamados() {
