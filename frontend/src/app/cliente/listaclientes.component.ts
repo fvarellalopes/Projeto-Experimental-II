@@ -12,6 +12,6 @@ export class ListaClientesComponent implements OnInit {
   ngOnInit() {
   }
 
-listaclientes
+
 
 }
