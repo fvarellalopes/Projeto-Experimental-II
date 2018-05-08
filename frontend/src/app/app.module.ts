@@ -19,6 +19,7 @@ import { ClienteService } from './cliente/client.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { ChamadoService } from './chamado/chamado.service';
 import { MenuComponent } from './menu/menu.component';
+import {ListaClientesComponent} from './cliente/listaclientes.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MenuComponent } from './menu/menu.component';
     ClienteComponent,
     UsuarioComponent,
     ChamadoComponent,
-    MenuComponent
+    MenuComponent,
+    ListaClientesComponent
   ],
   imports: [
     BrowserModule,

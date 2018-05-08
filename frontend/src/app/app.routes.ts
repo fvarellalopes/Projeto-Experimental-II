@@ -8,7 +8,7 @@ import {HomeComponent} from './home/home.component'
 import {ClienteComponent} from './cliente/cliente.component'
 import {UsuarioComponent} from './usuario/usuario.component'
 import {ChamadoComponent} from './chamado/chamado.component'
-
+import {ListaClientesComponent} from './cliente/listaclientes.component'
 
 
 export const ROUTES: Routes = [
@@ -17,5 +17,6 @@ export const ROUTES: Routes = [
   {path: 'cliente', component: ClienteComponent},
   {path: 'usuario', component: UsuarioComponent},
   {path: 'chamado', component: ChamadoComponent},
+  {path: 'listarclientes', component: ListaClientesComponent},
 
 ];
