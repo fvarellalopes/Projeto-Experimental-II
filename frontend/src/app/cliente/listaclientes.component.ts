@@ -1,4 +1,7 @@
-import {Component, OnInit} from "@angular/core"
+import { Component, OnInit} from "@angular/core";
+import { Router } from '@angular/router';
+import { ClienteService } from './client.service';
+import { Cliente } from './cliente';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +10,32 @@ import {Component, OnInit} from "@angular/core"
 })
 export class ListaClientesComponent implements OnInit {
 
-  constructor() { }
+  public clientes: Cliente[] = [];
+
+  constructor(
+     private router: Router,
+     private clienteService: ClienteService
+   ) { }
 
   ngOnInit() {
+    this.carregarTodos();
   }
 
+  public carregarTodos(){
+    this.clienteService.getcliente()
+    .subscribe(res => {
+       this.clientes = res;
+     }, err => {
+       console.log(err);
+     });
+  }
 
-
+  // public deletarCliente(id){
+  //   this.clienteService.deletecliente(id)
+  //   .subscribe(res => {
+  //      console.log(id);
+  //    }, err => {
+  //      console.log(err);
+  //    });
+  // }
 }

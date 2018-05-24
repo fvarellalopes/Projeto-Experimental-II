@@ -14,36 +14,35 @@ export class ClienteService {
 
   public clientesUrl = 'https://chamadin.herokuapp.com/rest/clientes/';
 
-
   public addCliente(body: Object): Observable<Cliente[]> {
-      const bodyString = JSON.stringify(body);
-      const headers = new Headers({ 'Content-Type': 'application/json' });
-      const options = new RequestOptions({ headers: headers });
+    const bodyString = JSON.stringify(body);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
-      console.log(body);
+    console.log(body);
 
-      return this.http.post(this.clientesUrl, body, options)
-        .map((res: Response) => res.json());
-    }
+    return this.http.post(this.clientesUrl, body, options)
+      .map((res: Response) => res.json());
+  }
 
-            getcliente (): Observable<Cliente[]> {
+  getcliente (): Observable<Cliente[]> {
+    return this.http.get(this.clientesUrl)
+    .map((res: Response) => res.json());
+  }
 
-            return this.http.get(this.clientesUrl)
-            .map((res: Response) => res.json());
+  // deletecliente (body: Object): Observable<String> {
+  //   const bodyString = JSON.stringify(body);
+  //   const headers = new Headers({ 'Content-Type': 'application/json' });
+  //   const options = new RequestOptions({ headers: headers });
+  //
+  //   console.log(body);
+  //
+  // return this.http.post<Hero>(this.clientesUrl, body, options)
+  //     .map((res: Response) => res.toString());
+  // }
 
-
-
-              }
-
-
-              private handleError(error: Response) {
-
-                console.error(error);
-
-                return Observable.throw(error.json().error || 'Server error');
-
-            }
-
-
-
+  private handleError(error: Response) {
+    console.error(error);
+    return Observable.throw(error.json().error || 'Server error');
+  }
 }

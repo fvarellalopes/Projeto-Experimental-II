@@ -18,7 +18,7 @@
                     <h3 class="panel-title">Listagem de Clientes</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                    <button type="button" class="btn btn-sm btn-primary btn-create">Novo</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-create"><a class="btn-novo" href="/cliente">Novo</a></button>
                   </div>
                 </div>
               </div>
@@ -29,41 +29,21 @@
                         <th><em class="fa fa-cog"></em></th>
                         <th class="hidden-xs">ID</th>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>Telefone</th>
                     </tr>
                   </thead>
                   <tbody>
-                          <tr>
-                            <td align="center">
-                              <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                              <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                            </td>
-                            <td class="hidden-xs">1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
-                          </tr>
-                        </tbody>
+                    <tr *ngFor="let cliente of clientes">
+                      <td align="center">
+                        <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
+                        <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
+                      </td>
+                      <td class="hidden-xs">{{cliente.idCliente}}</td>
+                      <td>{{cliente.nome}}</td>
+                      <td>{{cliente.telefone}}</td>
+                    </tr>
+                  </tbody>
                 </table>
-
-              </div>
-              <div class="panel-footer">
-                <div class="row">
-                  <div class="col col-xs-4">Page 1 of 5
-                  </div>
-                  <div class="col col-xs-8">
-                    <ul class="pagination hidden-xs pull-right">
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                    </ul>
-                    <ul class="pagination visible-xs pull-right">
-                        <li><a href="#">«</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
 
