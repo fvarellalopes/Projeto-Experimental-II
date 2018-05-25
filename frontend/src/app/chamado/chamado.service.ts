@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Chamado } from './chamado';
 import { Cliente } from '../cliente/cliente';
 import { Usuario } from '../usuario/usuario';
+import { PerfilUsuario } from '../usuario/perfilUsuario';
 import { TipoChamado } from './tipoChamado';
 import { HttpClientModule } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -60,4 +61,15 @@ import { catchError, map, tap } from 'rxjs/operators';
                           return this.http.get('https://chamadin.herokuapp.com/rest/usuarios/')
                                     .map((response:Response) => response.json());
                               }
+            getPerfis(): Observable<PerfilUsuario[]> {
+                 const headers = new Headers({ 'Content-Type': 'application/json'});
+                 const options = new RequestOptions({ headers: headers });
+
+                 return this.http.get('https://chamadin.herokuapp.com/rest/perfis/')
+                     .map((response:Response) => response.json());
+             }
+             getChamado (): Observable<Chamado[]> {
+                return this.http.get(this.chamadosUrl)
+               .map((res: Response) => res.json());
+               }
 }

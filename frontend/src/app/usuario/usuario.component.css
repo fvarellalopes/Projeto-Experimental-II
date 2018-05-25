@@ -12,3 +12,10 @@
     min-height:100%;
     height:auto;
     }
+
+    .btn-novo {
+      color: #FFF;
+    }
+    .btn-novo:focus {
+      color: #AAA;
+    }

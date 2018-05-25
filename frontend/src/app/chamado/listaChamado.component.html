@@ -3,7 +3,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
-<body class="usuariobackground">
+<body class="chamadobackground">
 
   <app-menu></app-menu>
 <div class="container">
@@ -15,10 +15,10 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col col-xs-6">
-                    <h3 class="panel-title">Listagem de Usuarios</h3>
+                    <h3 class="panel-title">Listagem de Chamados</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                    <button type="button" class="btn btn-sm btn-primary btn-create"><a class="btn-novo" href="/usuario">Novo</a></button>
+                    <button type="button" class="btn btn-sm btn-primary btn-create"><a class="btn-novo" href="/chamado">Novo</a></button>
                   </div>
                 </div>
               </div>
@@ -27,25 +27,28 @@
                   <thead>
                     <tr>
                         <th><em class="fa fa-cog"></em></th>
-                        <th class="hidden-xs">Name</th>
-                        <th>Telefone</th>
-                        <th>Email</th>
+                        <th class="hidden-xs">Numero</th>
+                        <th>Urgência</th>
+                        <th>Titulo</th>
+                        <th>Situacao</th>
                         <th>cliente</th>
-                        <th>Perfil Usuario</th>
+                        <th>Usuario</th>
+                        <th>Tipo</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let User of usuario">
-                    <!-- <tr *ngFor="let cliente of cliente"> -->
+                    <tr *ngFor="let chamado of chamado">
                       <td align="center">
                         <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
                         <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
                       </td>
-                      <td class="hidden-xs">{{User.nome}}</td>
-                      <td>{{User.telefone}}</td>
-                      <td>{{User.email}}</td>
-                      <td>{{User.cliente.nome}}</td>
-                      <td>{{User.perfilUsuario.descricao}}</td>
+                      <td class="hidden-xs">{{chamado.idChamado}}</td>
+                      <td>{{chamado.prioridade}}</td>
+                      <td>{{chamado.titulo}}</td>
+                      <td>{{chamado.situacao}}</td>
+                      <td>{{chamado.cliente.nome}}</td>
+                      <td>{{chamado.usuario.nome}}</td>
+                      <td>{{chamado.tipoChamado.descricao}}</td>
                     </tr>
                   </tbody>
                 </table>

@@ -11,7 +11,6 @@ import { ROUTES } from './app.routes'
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ChamadoComponent } from './chamado/chamado.component';
@@ -20,19 +19,20 @@ import { UsuarioService } from './usuario/usuario.service';
 import { ChamadoService } from './chamado/chamado.service';
 import { MenuComponent } from './menu/menu.component';
 import {ListaClientesComponent} from './cliente/listaclientes.component';
-import {ListaUsuarioComponent} from './usuario/listaUsuario.component'
+import {ListaUsuarioComponent} from './usuario/listaUsuario.component';
+import {ListaChamadoComponent} from './chamado/listaChamado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
     ClienteComponent,
     UsuarioComponent,
     ChamadoComponent,
     MenuComponent,
     ListaClientesComponent,
-    ListaUsuarioComponent
+    ListaUsuarioComponent,
+    ListaChamadoComponent
   ],
   imports: [
     BrowserModule,
