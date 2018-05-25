@@ -9,6 +9,7 @@ import {ClienteComponent} from './cliente/cliente.component'
 import {UsuarioComponent} from './usuario/usuario.component'
 import {ChamadoComponent} from './chamado/chamado.component'
 import {ListaClientesComponent} from './cliente/listaclientes.component'
+import {ListaUsuarioComponent} from './usuario/listaUsuario.component'
 
 
 export const ROUTES: Routes = [
@@ -18,5 +19,6 @@ export const ROUTES: Routes = [
   {path: 'usuario', component: UsuarioComponent},
   {path: 'chamado', component: ChamadoComponent},
   {path: 'listarclientes', component: ListaClientesComponent},
+  {path: 'listarUsuario', component: ListaUsuarioComponent},
 
 ];

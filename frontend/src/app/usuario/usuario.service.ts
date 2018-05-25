@@ -43,5 +43,10 @@ export class UsuarioService {
               .map((response:Response) => response.json());
       }
 
+      getUsuario (): Observable<Usuario[]> {
+        return this.http.get(this.UsuarioUrl)
+        .map((res: Response) => res.json());
+      }
+
 
 }

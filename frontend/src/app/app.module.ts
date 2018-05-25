@@ -20,7 +20,7 @@ import { UsuarioService } from './usuario/usuario.service';
 import { ChamadoService } from './chamado/chamado.service';
 import { MenuComponent } from './menu/menu.component';
 import {ListaClientesComponent} from './cliente/listaclientes.component';
-
+import {ListaUsuarioComponent} from './usuario/listaUsuario.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import {ListaClientesComponent} from './cliente/listaclientes.component';
     UsuarioComponent,
     ChamadoComponent,
     MenuComponent,
-    ListaClientesComponent
+    ListaClientesComponent,
+    ListaUsuarioComponent
   ],
   imports: [
     BrowserModule,
