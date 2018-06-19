@@ -21,32 +21,12 @@ import br.univel.pe.repository.UsuarioRepository;
 
 public class Autenticator {
 
-	/* Simula uma tabela do banco com os usuarios */
-//	private final Map<String, String> users = new HashMap();
-
-	/* Simula uma tabela do banco com as chaves de acesso */
-	// private final Map<String, String> keys = new HashMap();
-
-	/* Guarda os tokens gerados em tempo de execução */
-
 	private static Autenticator autenticator = null;
 
-	// public static final String KEY = "key";
 	public static final String TOKEN = "token";
 
 	private Autenticator() {
-		/**
-		 * Guarda o usuário e senha dos clientes da API
-		 */
-//		users.put("walter", "white");
-//		users.put("toni", "soprano");
 
-		/**
-		 * keys são geradas antecipadamente e disponibilizadas para os clientes da API
-		 * Aqui estamos representando as keys para os dois users pré cadastrados.
-		 */
-		// keys.put("ece40d50-b22b-4b33-a728-343be730d85e", "walter");
-		// keys.put("1ee68990-2d56-44a9-ae40-09d0bf074d8d", "toni");
 	}
 
 	public static Autenticator getInstance() {
@@ -57,9 +37,6 @@ public class Autenticator {
 	}
 
 	public String login(String user, String password) throws LoginException, NoSuchAlgorithmException {
-
-		// if (keys.containsKey(key)) {
-		// String userStorage = keys.get(key);
 		Usuario usuario = new UsuarioRepository().buscaPorEmail(user);
 		if (usuario != null) {
 			String passwordStorage = usuario.getSenha();
@@ -67,7 +44,7 @@ public class Autenticator {
 				String auth = UUID.randomUUID().toString();
 				Sessao sessao = new Sessao();
 				sessao.setToken(auth);
-				sessao.setTimestamp(System.currentTimeMillis() + 1000*60*30);
+				sessao.setTimestamp(System.currentTimeMillis() + 1000 * 60 * 30);
 				getRepository().saveOrUpdate(sessao);
 				return auth;
 			}
@@ -81,15 +58,12 @@ public class Autenticator {
 		return sessao != null && sessao.getTimestamp() > System.currentTimeMillis();
 	}
 
-
-	public void logout( String token) throws Exception {
-		// if (isKeyValid(key)) {
-		// String userKey = keys.get(key);
+	public void logout(String token) throws Exception {
 		if (isTokenValid(token)) {
 			getRepository().delete(getRepository().buscaPorToken(token).getId());
 			return;
 		}
-		
+
 	}
 
 	public static String sha1(String input) throws NoSuchAlgorithmException {

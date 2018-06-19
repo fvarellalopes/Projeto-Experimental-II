@@ -53,7 +53,7 @@ public class UsuarioService extends GenericService<Usuario, Long> {
 
 		} catch (final LoginException ex) {
 			JsonObject jsonObjBuilder = new JsonObject();
-			jsonObjBuilder.addProperty("message", "Problem matching key, user and password");
+			jsonObjBuilder.addProperty("message", "Usuario ou senha incorretos");
 
 			return Response.status(Status.UNAUTHORIZED).entity(jsonObjBuilder.toString()).build();
 		}
