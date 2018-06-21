@@ -29,7 +29,7 @@ export class ListaUsuarioComponent  {
   public carregarTodos(){
     this.usuarioService.getUsuario()
     .subscribe(res => {
-       this.usuario = res;
+       this.usuario = res.body;
        this.teste();
      }, err => {
        console.log(err);

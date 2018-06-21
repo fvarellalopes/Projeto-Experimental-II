@@ -50,7 +50,7 @@ export class UsuarioComponent implements OnInit {
        console.log(<HTMLElement>document.getElementById('cliente'))
       this.usuarioService.addUsuario(this.usuario)
        .subscribe(res => {
-          console.log(res)
+          console.log(res.body)
           this.limparcampos();
           this.abrirSucesso();
         }, err => {
@@ -63,7 +63,7 @@ export class UsuarioComponent implements OnInit {
             this.usuarioService.getPerfis()
                 .subscribe(
                     perfis => {
-                        this.perfis = perfis;
+                        this.perfis = perfis.body;
                         console.log(perfis);
                     }, //Bind to view
                                 err => {
@@ -75,7 +75,7 @@ export class UsuarioComponent implements OnInit {
               this.usuarioService.getClientes()
                   .subscribe(
                       clientes => {
-                          this.clientes = clientes;
+                          this.clientes = clientes.body;
                           console.log(clientes);
                       }, //Bind to view
                                   err => {

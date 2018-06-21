@@ -29,7 +29,7 @@ export class ListaChamadoComponent  {
   public carregarTodos(){
     this.chamadoService.getChamado()
     .subscribe(res => {
-       this.chamado = res;
+       this.chamado = res.body;
        this.teste();
      }, err => {
        console.log(err);

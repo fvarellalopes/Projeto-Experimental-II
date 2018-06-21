@@ -1,33 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {  Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Cliente } from './cliente';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClient ,HttpResponse, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable()
 export class ClienteService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   public clientesUrl = 'https://chamadin.herokuapp.com/rest/clientes/';
 
-  public addCliente(body: Object): Observable<Cliente[]> {
+  public addCliente(body: Object): Observable<HttpResponse<Cliente[]>> {
     const bodyString = JSON.stringify(body);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
+    // const headers = new Headers({ 'Content-Type': 'application/json' });
+    // const options = new RequestOptions({ headers: headers });
 
     console.log(body);
 
-    return this.http.post(this.clientesUrl, body, options)
-      .map((res: Response) => res.json());
+    return this.http.post(this.clientesUrl, body, {observe: 'response'});
   }
 
-  getcliente (): Observable<Cliente[]> {
-    return this.http.get(this.clientesUrl)
-    .map((res: Response) => res.json());
+  getcliente (): Observable<HttpResponse<Cliente[]>> {
+    return this.http.get(this.clientesUrl, {observe: 'response'});
   }
 
   // deletecliente (body: Object): Observable<String> {

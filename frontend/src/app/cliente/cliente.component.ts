@@ -40,7 +40,7 @@ export class ClienteComponent implements OnInit {
         this.Fecharsucesso();
        this.clienteService.addCliente(this.cliente)
        .subscribe(res => {
-          console.log(res)
+          console.log(res.body)
           this.limparcampos();
           this.abrirSucesso();
         }, err => {

@@ -56,7 +56,7 @@ export class ChamadoComponent implements OnInit {
        this.Fecharerro();
        this.chamadoService.addChamado(this.chamado)
        .subscribe(res => {
-          console.log(res)
+          console.log(res.body)
           this.limparcampos();
           this.abrirSucesso();
         }, err => {
@@ -71,7 +71,7 @@ export class ChamadoComponent implements OnInit {
           this.chamadoService.getClientes()
               .subscribe(
                   clientes => {
-                      this.clientes = clientes;
+                      this.clientes = clientes.body;
                       console.log(clientes);
                   }, //Bind to view
                               err => {
@@ -84,7 +84,7 @@ export class ChamadoComponent implements OnInit {
             this.chamadoService.getSChamado()
                 .subscribe(
                     schamado => {
-                        this.schamado = schamado;
+                        this.schamado = schamado.body;
                         console.log(schamado);
                     }, //Bind to view
                                 err => {
@@ -96,7 +96,7 @@ export class ChamadoComponent implements OnInit {
               this.chamadoService.getUsuario()
                   .subscribe(
                       usuario => {
-                          this.usuario = usuario;
+                          this.usuario = usuario.body;
                           console.log(usuario);
                       }, //Bind to view
                                   err => {

@@ -24,7 +24,7 @@ export class ListaClientesComponent implements OnInit {
   public carregarTodos(){
     this.clienteService.getcliente()
     .subscribe(res => {
-       this.clientes = res;
+       this.clientes = res.body;
      }, err => {
        console.log(err);
      });

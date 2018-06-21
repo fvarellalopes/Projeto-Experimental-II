@@ -1,51 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {  Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Usuario } from './usuario';
 import { Cliente } from '../cliente/cliente';
 import { PerfilUsuario } from './perfilUsuario';
 
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClient ,HttpResponse, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 
 @Injectable()
 export class UsuarioService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   public UsuarioUrl = 'https://chamadin.herokuapp.com/rest/usuarios/';
 
 
-  public addUsuario(body: Object): Observable<Usuario[]> {
+  public addUsuario(body: Object): Observable<HttpResponse<Usuario[]>> {
       const bodyString = JSON.stringify(body);
-      const headers = new Headers({ 'Content-Type': 'application/json'});
-      const options = new RequestOptions({ headers: headers });
 
       console.log(body);
 
-      return this.http.post(this.UsuarioUrl, body, options)
-        .map((res: Response) => res.json());
+      return this.http.post(this.UsuarioUrl, body, {observe: 'response'});
     }
-    getPerfis(): Observable<PerfilUsuario[]> {
-         const headers = new Headers({ 'Content-Type': 'application/json'});
-         const options = new RequestOptions({ headers: headers });
+    getPerfis(): Observable<HttpResponse<PerfilUsuario[]>> {
+         // const headers = new Headers({ 'Content-Type': 'application/json'});
+         // const options = new RequestOptions({ headers: headers });
 
-         return this.http.get('https://chamadin.herokuapp.com/rest/perfis/')
-             .map((response:Response) => response.json());
+         return this.http.get('http://localhost:8080/projetoe/rest/perfis/', {observe: 'response'});
      }
-     getClientes(): Observable<Cliente[]> {
-          const headers = new Headers({ 'Content-Type': 'application/json'});
-          const options = new RequestOptions({ headers: headers });
+     getClientes(): Observable<HttpResponse<Cliente[]>> {
+          // const headers = new Headers({ 'Content-Type': 'application/json'});
+          // const options = new RequestOptions({ headers: headers });
 
-          return this.http.get('https://chamadin.herokuapp.com/rest/clientes/')
-              .map((response:Response) => response.json());
+          return this.http.get('https://chamadin.herokuapp.com/rest/clientes/', {observe: 'response'});
       }
 
-      getUsuario (): Observable<Usuario[]> {
-        return this.http.get(this.UsuarioUrl)
-        .map((res: Response) => res.json());
+      getUsuario (): Observable<HttpResponse<Usuario[]>> {
+        return this.http.get(this.UsuarioUrl, {observe: 'response'});
       }
 
 
