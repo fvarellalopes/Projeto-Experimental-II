@@ -22,20 +22,28 @@ export class ListaClientesComponent implements OnInit {
   }
 
   public carregarTodos(){
-    this.clienteService.getcliente()
-    .subscribe(res => {
-       this.clientes = res.body;
-     }, err => {
-       console.log(err);
-     });
-  }
+      this.clienteService.getcliente()
+      .subscribe(res => {
+         this.clientes = res.body;
+  	   this.mostrarTela();
+       }, err => {
+         console.log(err);
+  	   this.mostrarTela();
+       });
+    }
 
-  // public deletarCliente(id){
-  //   this.clienteService.deletecliente(id)
-  //   .subscribe(res => {
-  //      console.log(id);
-  //    }, err => {
-  //      console.log(err);
-  //    });
-  // }
+    public editar(id){
+  	  window.location.href = '/cliente/'+id;
+}
+
+
+public mostrarTela(){
+  document.getElementById("listarcliente").style.display = 'block';
+  document.getElementById("loading").style.display = 'none';
+}
+
+public mudarTela(){
+  document.getElementById("listarcliente").style.display = 'none';
+  document.getElementById("loading").style.display = 'block';
+}
 }
