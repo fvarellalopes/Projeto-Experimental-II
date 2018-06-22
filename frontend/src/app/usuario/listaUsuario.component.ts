@@ -70,4 +70,15 @@ export class ListaUsuarioComponent  {
     document.getElementById("loading").style.display = 'block';
   }
 
+  public remover(id){
+     this.usuarioService.deleteUsuario(id)
+     .subscribe(res => {
+     this.mudarTela();
+     this.carregarTodos();
+      }, err => {
+     this.mudarTela();
+     this.carregarTodos();
+      });
+   }
+
 }

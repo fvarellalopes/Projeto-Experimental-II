@@ -17,6 +17,8 @@ export class ChamadoComponent implements OnInit {
       clientes: Cliente[];
       schamado: TipoChamado[];
       usuario: Usuario[];
+     chamados : Chamado[] = [];
+      public idChamado = 0;
 
      constructor(
     		private router: Router,
@@ -28,6 +30,12 @@ export class ChamadoComponent implements OnInit {
           this.getSChamado();
           this.getUsuario();
           console.log(this.getSChamado);
+          try {
+            this.idChamado = parseInt(this.router.url.split('/')[2]);
+            this.carregarEditar();
+          } catch (e) {
+            window.location.href = '/listarChamado';
+      }
       }
 
       public limparcampos(){
@@ -104,4 +112,23 @@ export class ChamadoComponent implements OnInit {
                               console.log(err);
                           })
           }
+
+          public carregarEditar(){
+        this.chamadoService.getChamado()
+        .subscribe(res => {
+           this.chamado = res.body;
+           this.carregarCampos();
+         }, err => {
+           console.log(err);
+           window.location.href = '/listarChamado';
+         });
+      }
+
+      public carregarCampos(){
+        for (let c1 of this.chamados) {
+          if(c1.idChamado == this.idChamado) {
+            this.chamado = c1;
+          }
+        }
+      }
 }

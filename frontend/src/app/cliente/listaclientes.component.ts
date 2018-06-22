@@ -36,6 +36,17 @@ export class ListaClientesComponent implements OnInit {
   	  window.location.href = '/cliente/'+id;
 }
 
+public remover(id){
+   this.clienteService.deletecliente(id)
+   .subscribe(res => {
+   this.mudarTela();
+   this.carregarTodos();
+    }, err => {
+   this.mudarTela();
+   this.carregarTodos();
+    });
+ }
+ 
 
 public mostrarTela(){
   document.getElementById("listarcliente").style.display = 'block';

@@ -43,4 +43,11 @@ export class UsuarioService {
       }
 
 
+      deleteUsuario (id: number): Observable<HttpResponse<Cliente[]>> {
+    		const headers = new Headers({ 'Content-Type': 'application/json' });
+    		const options = new RequestOptions({ headers: headers });
+
+    	 return this.http.delete('https://chamadin.herokuapp.com/rest/usuarios/' + id, {observe: 'response'});
+    	}
+
 }

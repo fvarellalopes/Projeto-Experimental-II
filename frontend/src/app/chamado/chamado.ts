@@ -7,6 +7,7 @@ export class Chamado{
 
 
     constructor(
+      public idChamado?: number,
       public  descricao?: string,
       public  titulo?: string,
       public  data?: string,

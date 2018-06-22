@@ -13,9 +13,11 @@ import { Cliente } from '../cliente/cliente';
 })
 export class editarChamadoComponent  {
 
-  public chamado: Chamado[] = [];
+  public chamados: Chamado[] = [];
+  public chamado = new Chamado();
   public cliente = new Cliente();
   public perfilusuario = new PerfilUsuario();
+  public idChamado = 0;
 
   constructor(
   private router: Router,
@@ -23,7 +25,12 @@ export class editarChamadoComponent  {
  ) { }
 
    ngOnInit() {
-     this.carregarTodos();
+     try {
+       this.idChamado = parseInt(this.router.url.split('/')[2]);
+       this.carregarEditar();
+     } catch (e) {
+       window.location.href = '/listarChamado';
+     }
    }
 
   public carregarTodos(){
@@ -41,17 +48,36 @@ export class editarChamadoComponent  {
     this.cliente.nome = " ";
     this.perfilusuario.descricao = " ";
 
-    for (var i  = 0; i < this.chamado.length; i++){
-        if(  this.chamado[i].cliente == null){
-             this.chamado[i].cliente = this.cliente;
+    for (var i  = 0; i < this.chamados.length; i++){
+        if(  this.chamados[i].cliente == null){
+             this.chamados[i].cliente = this.cliente;
         }
         // if(  this.chamado[i].perfilUsuario == null){
         //      this.chamado[i].perfilUsuario = this.perfilusuario
         // }
       }
-      console.log(this.chamado);
+      console.log(this.chamados);
 
   }
 
+  public carregarEditar(){
+this.chamadoService.getChamado()
+.subscribe(res => {
+   this.chamados = res.body;
+   this.carregarCampos();
+ }, err => {
+   console.log(err);
+   window.location.href = '/listarChamado';
+ });
+}
+
+public carregarCampos(){
+for (let c of this.chamados) {
+  if(c.idChamado == this.idChamado) {
+    this.chamado = c;
+  }
+}
+console.log(this.chamado)
+}
 
 }
