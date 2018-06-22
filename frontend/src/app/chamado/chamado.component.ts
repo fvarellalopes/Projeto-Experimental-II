@@ -17,7 +17,7 @@ export class ChamadoComponent implements OnInit {
       clientes: Cliente[];
       schamado: TipoChamado[];
       usuario: Usuario[];
-      public chamados : Chamado[] = [];
+     chamados : Chamado[] = [];
       public idChamado = 0;
 
      constructor(
@@ -125,9 +125,9 @@ export class ChamadoComponent implements OnInit {
       }
 
       public carregarCampos(){
-        for (let c of this.chamados) {
-          if(c.idChamado == this.idChamado) {
-            this.chamado = c;
+        for (let c1 of this.chamados) {
+          if(c1.idChamado == this.idChamado) {
+            this.chamado = c1;
           }
         }
       }

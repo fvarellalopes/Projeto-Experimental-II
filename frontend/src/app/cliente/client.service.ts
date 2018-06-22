@@ -29,14 +29,15 @@ export class ClienteService {
   }
 
   deletecliente (id: number): Observable<HttpResponse<Cliente[]>> {
-		const bodyString = JSON.parse('{"id":' + id +'}');
+		// const bodyString = JSON.parse('https://chamadin.herokuapp.com/rest/clientes/' + 3);
 		const headers = new Headers({ 'Content-Type': 'application/json' });
 		const options = new RequestOptions({ headers: headers });
+    // public clientesUrl = 'https://chamadin.herokuapp.com/rest/clientes/';
 
-		console.log(bodyString);
+		// console.log(bodyString);
 
-    return null;
-		// return this.http.delete(this.clientesUrl, bodyString, {observe: 'response'});
+    // return null;
+	 return this.http.delete('https://chamadin.herokuapp.com/rest/clientes/' + id, {observe: 'response'});
 	}
 
   private handleError(error: Response) {
