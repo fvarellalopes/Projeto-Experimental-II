@@ -6,6 +6,14 @@
 <body class="usuariobackground">
 
   <app-menu></app-menu>
+<div id="loading" class="container" style="display: block;">
+	<div class="row">
+      <div class="animationload">
+            <div class="osahanloading"></div>
+      </div>
+	</div>
+</div>
+<div id="listarUsuario" style="display: none;">
 <div class="container">
     <div class="row">
 
@@ -38,7 +46,7 @@
                     <tr *ngFor="let User of usuario">
                     <!-- <tr *ngFor="let cliente of cliente"> -->
                       <td align="center">
-                        <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
+                        <a (click)= "editar(User.idUsuario)" class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
                         <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
                       </td>
                       <td class="hidden-xs">{{User.nome}}</td>
@@ -52,5 +60,8 @@
               </div>
             </div>
 
-</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>

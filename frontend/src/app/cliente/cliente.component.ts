@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./cliente.Component.css']
 })
 export class ClienteComponent implements OnInit {
-  title = 'cliente';
-  public cliente = new Cliente();
+    title = 'cliente';
+   public clientes : Cliente[] = [];
+   public cliente = new Cliente();
+   public idCliente = 0;
 
      constructor(
     		private router: Router,
@@ -18,7 +20,12 @@ export class ClienteComponent implements OnInit {
       ) { }
 
       ngOnInit() {
-
+        try {
+          this.idCliente = parseInt(this.router.url.split('/')[2]);
+          this.carregarEditar();
+        } catch (e) {
+          window.location.href = '/listarChamado';
+    }
       }
 
       public limparcampos(){
@@ -36,7 +43,7 @@ export class ClienteComponent implements OnInit {
       }
 
 
-     public save(){
+      public save(){
         this.Fecharsucesso();
        this.clienteService.addCliente(this.cliente)
        .subscribe(res => {
@@ -48,4 +55,23 @@ export class ClienteComponent implements OnInit {
         }
       );
     }
+
+    public carregarEditar(){
+  this.clienteService.getcliente()
+  .subscribe(res => {
+     this.clientes = res.body;
+     this.carregarCampos();
+   }, err => {
+     console.log(err);
+     window.location.href = '/listarChamado';
+   });
+}
+
+public carregarCampos(){
+  for (let c of this.clientes) {
+    if(c.idCliente == this.idCliente) {
+      this.cliente = c;
+    }
+  }
+}
 }

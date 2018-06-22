@@ -31,8 +31,10 @@ export class ListaUsuarioComponent  {
     .subscribe(res => {
        this.usuario = res.body;
        this.teste();
+       this.mostrarTela();
      }, err => {
        console.log(err);
+       this.mostrarTela();
      });
 
 
@@ -53,5 +55,19 @@ export class ListaUsuarioComponent  {
 
   }
 
+    public editar(id){
+  	  window.location.href = '/usuario/'+id;
+}
+
+
+  public mostrarTela(){
+    document.getElementById("listarUsuario").style.display = 'block';
+    document.getElementById("loading").style.display = 'none';
+  }
+
+  public mudarTela(){
+    document.getElementById("listarUsuario").style.display = 'none';
+    document.getElementById("loading").style.display = 'block';
+  }
 
 }
