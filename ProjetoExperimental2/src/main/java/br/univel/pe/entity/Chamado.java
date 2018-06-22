@@ -40,8 +40,8 @@ public class Chamado implements Serializable, IEntidade<Long> {
     @OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<UsuarioChamado> usuarios = new ArrayList<>();
 
-    @OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<AtualizacaoChamado> atualizacoes = new ArrayList<>();
+//    @OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+//    private List<AtualizacaoChamado> atualizacoes = new ArrayList<>();
 
     public TipoChamado getTipoChamado() {
         return tipoChamado;
@@ -131,13 +131,13 @@ public class Chamado implements Serializable, IEntidade<Long> {
         this.usuarios = usuarios;
     }
 
-    public List<AtualizacaoChamado> getAtualizacoes() {
-        return atualizacoes;
-    }
-
-    public void setAtualizacoes(List<AtualizacaoChamado> atualizacoes) {
-        this.atualizacoes = atualizacoes;
-    }
+//    public List<AtualizacaoChamado> getAtualizacoes() {
+//        return atualizacoes;
+//    }
+//
+//    public void setAtualizacoes(List<AtualizacaoChamado> atualizacoes) {
+//        this.atualizacoes = atualizacoes;
+//    }
 
     @Override
     public int hashCode() {
