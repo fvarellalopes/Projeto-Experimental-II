@@ -6,6 +6,14 @@
 <body class="chamadobackground">
 
   <app-menu></app-menu>
+  <div id="loading" class="container" style="display: block;">
+  	<div class="row">
+        <div class="animationload">
+              <div class="osahanloading"></div>
+        </div>
+  	</div>
+  </div>
+  <div id="listarchamado" style="display: none;">
 <div class="container">
     <div class="row">
 
@@ -39,8 +47,8 @@
                   <tbody>
                     <tr *ngFor="let chamado of chamado">
                       <td align="center">
-                        <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
-                        <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
+                        <a (click)= "editar(cliente.idCliente)" class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
+                        <a  class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
                       </td>
                       <td class="hidden-xs">{{chamado.idChamado}}</td>
                       <td>{{chamado.prioridade}}</td>
@@ -55,5 +63,8 @@
               </div>
             </div>
 
-</div></div></div>
+          </div>
+          </div>
+        </div>
+</div>
 </body>

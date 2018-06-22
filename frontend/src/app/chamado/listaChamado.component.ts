@@ -31,8 +31,10 @@ export class ListaChamadoComponent  {
     .subscribe(res => {
        this.chamado = res.body;
        this.teste();
+       this.mostrarTela();
      }, err => {
        console.log(err);
+       this.mostrarTela();
      });
 
 
@@ -52,6 +54,23 @@ export class ListaChamadoComponent  {
       console.log(this.chamado);
 
   }
+
+
+  public editar(id){
+    window.location.href = '/editarChamado/'+id;
+}
+
+
+
+public mostrarTela(){
+  document.getElementById("listarchamado").style.display = 'block';
+  document.getElementById("loading").style.display = 'none';
+}
+
+public mudarTela(){
+  document.getElementById("listarchamado").style.display = 'none';
+  document.getElementById("loading").style.display = 'block';
+}
 
 
 }

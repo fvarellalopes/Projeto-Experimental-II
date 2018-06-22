@@ -23,6 +23,6 @@ export const ROUTES: Routes = [
   {path: 'listarclientes', component: ListaClientesComponent},
   {path: 'listarUsuario', component: ListaUsuarioComponent},
   {path: 'listarChamado', component: ListaChamadoComponent},
-  {path: 'editarChamado', component: editarChamadoComponent},
+  {path: 'editarChamado/:id', component: editarChamadoComponent},
 
 ];

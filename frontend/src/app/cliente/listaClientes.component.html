@@ -44,7 +44,7 @@
                     <tr *ngFor="let cliente of clientes">
                       <td align="center">
                         <a (click)= "editar(cliente.idCliente)" class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
-                        <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
+                        <a (click)= "remover(cliente.idCliente)"class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
                       </td>
                       <td class="hidden-xs">{{cliente.idCliente}}</td>
                       <td>{{cliente.nome}}</td>

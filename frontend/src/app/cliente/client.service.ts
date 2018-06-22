@@ -28,16 +28,16 @@ export class ClienteService {
     return this.http.get(this.clientesUrl, {observe: 'response'});
   }
 
-  // deletecliente (body: Object): Observable<String> {
-  //   const bodyString = JSON.stringify(body);
-  //   const headers = new Headers({ 'Content-Type': 'application/json' });
-  //   const options = new RequestOptions({ headers: headers });
-  //
-  //   console.log(body);
-  //
-  // return this.http.post<Hero>(this.clientesUrl, body, options)
-  //     .map((res: Response) => res.toString());
-  // }
+  deletecliente (id: number): Observable<HttpResponse<Cliente[]>> {
+		const bodyString = JSON.parse('{"id":' + id +'}');
+		const headers = new Headers({ 'Content-Type': 'application/json' });
+		const options = new RequestOptions({ headers: headers });
+
+		console.log(bodyString);
+
+    return null;
+		// return this.http.delete(this.clientesUrl, bodyString, {observe: 'response'});
+	}
 
   private handleError(error: Response) {
     console.error(error);
