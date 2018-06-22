@@ -4,6 +4,7 @@ import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 
 import javax.security.auth.login.LoginException;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -39,14 +40,14 @@ public class UsuarioService extends GenericService<Usuario, Long> {
 	}
 
 	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("login")
-	public Response login(@Context HttpHeaders httpHeaders, @FormParam("user") String user,
-			@FormParam("password") String password) throws NoSuchAlgorithmException {
+	public Response login(@Context HttpHeaders httpHeaders, Usuario usuario) throws NoSuchAlgorithmException {
 
 		Autenticator autenticator = Autenticator.getInstance();
 //		String serviceKey = httpHeaders.getHeaderString(Autenticator.KEY);
 		try {
-			String authToken = autenticator.login(user, password);
+			String authToken = autenticator.login(usuario.getEmail(), usuario.getSenha());
 			JsonObject jsonObjBuilder = new JsonObject();
 			jsonObjBuilder.addProperty("token", authToken);
 			return Response.ok(jsonObjBuilder.toString()).build();

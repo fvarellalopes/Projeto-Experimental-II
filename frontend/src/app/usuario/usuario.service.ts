@@ -29,7 +29,7 @@ export class UsuarioService {
          // const headers = new Headers({ 'Content-Type': 'application/json'});
          // const options = new RequestOptions({ headers: headers });
 
-         return this.http.get('http://localhost:8080/projetoe/rest/perfis/', {observe: 'response'});
+         return this.http.get('https://chamadin.herokuapp.com/rest/perfis/', {observe: 'response'});
      }
      getClientes(): Observable<HttpResponse<Cliente[]>> {
           // const headers = new Headers({ 'Content-Type': 'application/json'});

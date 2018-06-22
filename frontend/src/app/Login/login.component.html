@@ -1,11 +1,12 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <body class="login2background">
         <div class="container">
-            
+
             <div class="col-lg-6 col-md-6 col-sm-8  loginbox">
                 <div class=" row">
                     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6">
@@ -20,22 +21,30 @@
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-user"></span>
                         </span>
-                        <input class="form-control" type="text" placeholder="User name"  >
+                        <input class="form-control" type="text" placeholder="Email" [(ngModel)]="usuario.email"  >
                     </div>
                     <br>
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-lock"></span>
                         </span>
-                        <input class="form-control" type="password" placeholder="Password" >
+                        <input class="form-control" type="password" placeholder="Senha" [(ngModel)]="usuario.senha" >
                     </div>
+                    <div id="errogravar" style="display: none; padding-top: 20px;">
+                    <div  class="alert-danger alert-dismissible" align="center">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="Fecharerro()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <strong>Atenção. </strong> Usuário ou senha incorretos.
+                    </div>
+                  </div>
                 </div>
                 <div class="row ">
                     <div class="col-lg-8 col-md-8  col-sm-8 col-xs-7 forgotpassword ">
                       <!--  <a href="#"  > Forgot Username / Password?</a>-->
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4  col-xs-5 ">
-                        <a href="#" class=" btn btn-default submit-btn">Login <span class="glyphicon glyphicon-log-in"></span> </a>
+                        <button id="login" name="login" (click)="login()" class="btn btn-default submit-btn">Login</button>
                     </div>
                 </div>
             </div>

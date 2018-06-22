@@ -95,10 +95,21 @@ public abstract class GenericService<T extends IEntidade<S>, S extends Serializa
 		getRepository().saveOrUpdate(t);
 		return Response.ok().entity(t).build();
 	}
-
+	@DELETE
+	@Path("/{id}")
+	public Response deleteById(@PathParam("id") S id) {
+		try {
+			getRepository().delete(id);
+		} catch (Exception e) {
+			return Response.serverError().entity(e.getMessage()).build();
+		}
+		return Response.ok().entity(id).build();
+	}
+	
+	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response deleteUsuario(T t) {
+	public Response delete(T t) {
 		try {
 			getRepository().delete(t.getId());
 		} catch (Exception e) {

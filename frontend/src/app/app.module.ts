@@ -20,6 +20,7 @@ import { ChamadoComponent } from './chamado/chamado.component';
 import { ClienteService } from './cliente/client.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { ChamadoService } from './chamado/chamado.service';
+import { LoginService } from './login/login.service';
 import { MenuComponent } from './menu/menu.component';
 import {ListaClientesComponent} from './cliente/listaclientes.component';
 import {ListaUsuarioComponent} from './usuario/listaUsuario.component';
@@ -33,6 +34,7 @@ import {ListaChamadoComponent} from './chamado/listaChamado.component';
     LoginComponent,
     ClienteComponent,
     UsuarioComponent,
+    LoginComponent,
     ChamadoComponent,
     MenuComponent,
     ListaClientesComponent,
@@ -52,7 +54,7 @@ import {ListaChamadoComponent} from './chamado/listaChamado.component';
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot()
   ],
-  providers: [  ClienteService,UsuarioService,ChamadoService],
+  providers: [  ClienteService,UsuarioService,ChamadoService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
