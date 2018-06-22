@@ -25,6 +25,7 @@ import { MenuComponent } from './menu/menu.component';
 import {ListaClientesComponent} from './cliente/listaclientes.component';
 import {ListaUsuarioComponent} from './usuario/listaUsuario.component';
 import {ListaChamadoComponent} from './chamado/listaChamado.component';
+import {editarChamadoComponent} from './chamado/editarChamado.component';
 
 
 
@@ -39,7 +40,8 @@ import {ListaChamadoComponent} from './chamado/listaChamado.component';
     MenuComponent,
     ListaClientesComponent,
     ListaUsuarioComponent,
-    ListaChamadoComponent
+    ListaChamadoComponent,
+    editarChamadoComponent
   ],
   imports: [
     BrowserModule,
