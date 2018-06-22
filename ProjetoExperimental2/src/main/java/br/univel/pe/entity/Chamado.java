@@ -40,7 +40,7 @@ public class Chamado implements Serializable, IEntidade<Long> {
     @OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<UsuarioChamado> usuarios = new ArrayList<>();
 
-    @OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "chamado", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<AtualizacaoChamado> atualizacoes = new ArrayList<>();
 
     public TipoChamado getTipoChamado() {
