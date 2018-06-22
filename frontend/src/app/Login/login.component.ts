@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
          localStorage.setItem("token", null);
        }
         this.limparcampos();
-        this.router.navigate(['/cliente']);
+        this.router.navigate(['/listarChamado']);
       }, err => {
         this.errogravar();
         this.limparcampos()

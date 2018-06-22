@@ -13,7 +13,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  public UsuarioUrl = 'http://localhost:8080/projetoe/rest/usuarios/login';
+  public UsuarioUrl = 'https://chamadin.herokuapp.com/rest/usuarios/login';
 
 
   public login(body: Object): Observable<HttpResponse<any>> {
