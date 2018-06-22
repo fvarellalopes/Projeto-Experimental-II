@@ -16,8 +16,10 @@ export class UsuarioComponent implements OnInit {
   title = 'usuario';
 
   public usuario = new Usuario();
+  public usuarios : Usuario[] = [];
   perfis: PerfilUsuario[];
   clientes: Cliente[];
+  public idUsuario = 0;
 
      constructor(
     		private router: Router,
@@ -28,9 +30,15 @@ export class UsuarioComponent implements OnInit {
         this.getPerfis();
         this.getClientes();
         console.log(this.perfis);
+        try {
+          this.idUsuario = parseInt(this.router.url.split('/')[2]);
+          this.carregarEditar();
+        } catch (e) {
+          window.location.href = '/listarChamado';
       }
+}
 
-      public limparcampos(){
+    public limparcampos(){
 
         this.usuario = new Usuario();
 
@@ -83,5 +91,23 @@ export class UsuarioComponent implements OnInit {
                               console.log(err);
                           })
           }
+          public carregarEditar(){
+        this.usuarioService.getUsuario()
+        .subscribe(res => {
+           this.usuarios = res.body;
+           this.carregarCampos();
+         }, err => {
+           console.log(err);
+           window.location.href = '/listarChamado';
+         });
+      }
+
+      public carregarCampos(){
+        for (let u of this.usuarios) {
+          if(u.idUsuario == this.idUsuario) {
+            this.usuario = u;
+          }
+        }
+      }
 
 }

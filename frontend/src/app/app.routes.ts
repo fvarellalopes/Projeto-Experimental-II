@@ -10,6 +10,7 @@ import {ChamadoComponent} from './chamado/chamado.component'
 import {ListaClientesComponent} from './cliente/listaclientes.component'
 import {ListaUsuarioComponent} from './usuario/listaUsuario.component'
 import {ListaChamadoComponent} from './chamado/listaChamado.component'
+import {editarChamadoComponent} from './chamado/editarChamado.component';
 
 
 export const ROUTES: Routes = [
@@ -18,8 +19,10 @@ export const ROUTES: Routes = [
   {path: 'usuario', component: UsuarioComponent},
   {path: 'chamado', component: ChamadoComponent},
   {path: 'cliente/:id', component: ClienteComponent},
+  {path: 'usuario/:id', component: UsuarioComponent},
   {path: 'listarclientes', component: ListaClientesComponent},
   {path: 'listarUsuario', component: ListaUsuarioComponent},
   {path: 'listarChamado', component: ListaChamadoComponent},
+  {path: 'editarChamado', component: editarChamadoComponent},
 
 ];

@@ -74,8 +74,4 @@ public carregarCampos(){
     }
   }
 }
-public mostrarTela(){
-    document.getElementById("mercado").style.display = 'block';
-    document.getElementById("loading").style.display = 'none';
-  }
 }
